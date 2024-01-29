@@ -10,3 +10,9 @@ Caso:
 El hipotético sistema de cabañas "Hotel Copo de Nieve" requiere de una 
 aplicación web en donde los usuarios puedan realizar reservaciones de 
 habitaciones/cabañas de una manera sencilla, agilizada y segura.
+
+En este respositorio encontraras las carpetas
+1. Frontend
+2. Backend
+
+Estimados colegas, clonar este main en cada una de sus branchs para continuar de esta manera el trabajo en equipo. 
