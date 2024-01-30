@@ -8,60 +8,49 @@ en JSON
     "Phone": "0374895126"
 }
 */
-
 const { MongoClient } = require('mongodb');
 
-// URL de conexión a tu base de datos MongoDB
-const url = 'mongodb://localhost:27017';
+async function conectarMongoDB() {
+  // URL de conexión a tu base de datos MongoDB
+  const url = 'mongodb://localhost:27017';
 
-// Nombre de la base de datos
-const dbName = 'reservas_hoteles';
+  // Nombre de la base de datos
+  const dbName = 'reservas_hoteles';
 
-// Crear un nuevo cliente de MongoDB
-const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+  // Crear un nuevo cliente de MongoDB
+  const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Conectar al servidor de MongoDB
-client.connect((err) => {
-  if (err) {
-    console.error('Error al conectar a MongoDB:', err);
-    return;
-  }
+  try {
+    // Conectar al servidor de MongoDB
+    await client.connect();
 
-  console.log('Conexión exitosa a MongoDB');
+    console.log('Conexión exitosa a MongoDB');
 
-  // Seleccionar la base de datos
-  const db = client.db(dbName);
+    // Seleccionar la base de datos
+    const db = client.db(dbName);
 
-  // Definir una colección (tabla) para los hoteles
-  const hotelesCollection = db.collection('hoteles');
+    // Definir una colección (tabla) para los hoteles
+    const hotelesCollection = db.collection('hoteles');
 
-  // Ejemplo: Insertar un hotel en la colección
-  const nuevoHotel = {
-    nombre: 'Hotel Ejemplo',
-    direccion: 'Calle Principal 123',
-    habitaciones_disponibles: 10,
-    precio_por_noche: 100,
-  };
+    // Ejemplo: Insertar un hotel en la colección
+    const nuevoHotel = {
+      nombre: 'Hotel Ejemplo',
+      direccion: 'Calle Principal 123',
+      habitaciones_disponibles: 10,
+      precio_por_noche: 100,
+    };
 
-  hotelesCollection.insertOne(nuevoHotel, (err, result) => {
-    if (err) {
-      console.error('Error al insertar el hotel:', err);
-      return;
-    }
+    const resultado = await hotelesCollection.insertOne(nuevoHotel);
+    console.log('Hotel insertado correctamente:', resultado.ops);
 
-    console.log('Hotel insertado correctamente:', result.ops);
-  });
-
-  // Ejemplo: Consultar todos los hoteles
-  hotelesCollection.find({}).toArray((err, hoteles) => {
-    if (err) {
-      console.error('Error al obtener hoteles:', err);
-      return;
-    }
-
+    // Ejemplo: Consultar todos los hoteles
+    const hoteles = await hotelesCollection.find({}).toArray();
     console.log('Lista de hoteles:', hoteles);
-  });
+  } finally {
+    // Cierra la conexión al finalizar las operaciones
+    await client.close();
+  }
+}
 
-  // Cierra la conexión al finalizar las operaciones
-  client.close();
-});
+// Llamar a la función para conectar a MongoDB
+conectarMongoDB().catch(console.error);
