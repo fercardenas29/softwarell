@@ -1,3 +1,4 @@
+/* Inicio Estilos - Index.html */
 body, html {
   height: 100%;
   margin: 0;
@@ -48,3 +49,122 @@ body, html {
     font-size: 2rem;
   }
 }
+/* Fin Estilos - index.html */
+
+
+
+
+
+/* Inicio Estilos - Productos.html */
+/* Estilos globales */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000; /* Fondo negro para toda la página */
+  color: #fff; /* Texto en blanco para contraste */
+}
+
+/* Estilos para la página de productos */
+.product-page {
+  padding: 20px;
+  color: #fff; /* Texto en blanco para contraste */
+}
+
+.product-page h2 {
+  text-align: center;
+  color: #000; /* Cambiar el color del texto a negro */
+  margin-bottom: 30px;
+  font-size: 2rem;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.card {
+  background-color: #333; /* Fondo oscuro para las tarjetas */
+  color: #fff; /* Texto en blanco para contraste */
+  /* Resto de tus estilos para .card */
+}
+
+.availability-badge {
+  position: absolute;
+  bottom: 10px; /* Colocar en la esquina inferior derecha */
+  right: 10px;
+  background-color: #dc3545; /* Fondo rojo para no disponibilidad */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+/* Cambia el color de fondo del aviso de disponibilidad según el estado */
+.availability-badge.disponible {
+  background-color: #28a745; /* Fondo verde para disponibilidad */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.card {
+  background-color: #f8f9fa; /* Fondo claro para las tarjetas */
+  color: #000; /* Texto en negro para las tarjetas */
+  margin-bottom: 2rem;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease; /* Animación suave para las imágenes */
+}
+
+.card:hover img {
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón sobre la imagen */
+}
+
+/* Estilos para los textos de la tarjeta */
+.card-title, .card-text {
+  font-weight: bold;
+}
+
+/* Estilos para los elementos de la lista de las tarjetas */
+.card-text ul li {
+  margin-bottom: 0.5rem;
+}
+
+.card-text ul li::before {
+  content: "\2022";  /* Bala Unicode */
+  color: #007bff; /* Color para la bala, azul por ejemplo */
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Más estilos responsivos si se necesitan */
+@media (max-width: 576px) {
+  .product-page h2 {
+    font-size: 1.5rem;
+  }
+}
+
+#fechas-reserva label {
+  color: #000; /* Cambia el color del texto a negro */
+}
+
+#fechas-reserva {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* O el espacio que prefieras entre los inputs */
+  margin-bottom: 20px; /* Espacio debajo del bloque de fechas */
+}
+
+#fechas-reserva input[type="date"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff; /* O el color que prefieras */
+  color: #000;
+}
+
+/* Fin Estilos - Productos.html */

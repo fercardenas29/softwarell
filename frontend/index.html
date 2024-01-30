@@ -24,13 +24,13 @@
                 <a class="nav-link" href="#">Promociones</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Productos</a>
+                <a class="nav-link" href="productos.html">Productos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Acerca de Nosotros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Ingreso</a>
+                <a class="nav-link" href="index.html">Ingreso</a>
             </li>
             </ul>
         </div>
@@ -41,19 +41,19 @@
             <div class="row">
             <div class="col-12 text-center">
                 <h1>¡Realiza ya tu RESERVA!</h1>
-                <form>
-                <div class="form-row justify-content-center">
-                    <div class="col-auto">
-                        <input type="date" class="form-control" id="fechaIngreso" placeholder="Fecha de Ingreso">
-                    </div>
-                    <div class="col-auto">
-                        <input type="date" class="form-control" id="fechaSalida" placeholder="Fecha de Salida">
-                    </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary" id="botonBuscar" disabled>Buscar</button>
-                    </div>
-                </div>
-                </form>
+                <form id="booking-form" action="productos.html" method="GET">
+                    <div class="form-row justify-content-center">
+                        <div class="col-auto">
+                            <input type="date" name="fechaIngreso" class="form-control" id="fechaIngreso" placeholder="Fecha de Ingreso" required>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" name="fechaSalida" class="form-control" id="fechaSalida" placeholder="Fecha de Salida" required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary" id="botonBuscar" disabled>Buscar</button>
+                        </div>
+                        </div>
+                    </form>
             </div>
             </div>
         </div>
@@ -64,6 +64,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <!-- Tu archivo JavaScript personalizado -->
-    <script src="js/logic.js"></script>
+    <script src="js//indexLogic.js"></script>
 </body>
 </html>
