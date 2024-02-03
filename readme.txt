@@ -13,6 +13,6 @@ habitaciones/cabañas de una manera sencilla, agilizada y segura.
 
 En este respositorio encontraras las carpetas
 1. Frontend
-2. Backend xdxd
+2. Backend
 
 Estimados colegas, clonar este main en cada una de sus branchs para continuar de esta manera el trabajo en equipo. 
