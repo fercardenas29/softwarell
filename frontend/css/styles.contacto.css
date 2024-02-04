@@ -1,0 +1,252 @@
+/*INICIO CABERA*/
+/* Logo a la izquierda y menú de navegación debajo del logo */
+.site-header {
+  background-color: #fff; /* Fondo blanco para la cabecera */
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Asegura que el contenedor de la barra de navegación ocupe el ancho completo */
+.site-header .container {
+  max-width: 100%; /* Anula cualquier max-width que Bootstrap pueda aplicar */
+  flex-grow: 1; /* Asegura que el contenedor crezca para ocupar todo el espacio disponible */
+}
+
+#logo {
+  max-width: 200px; /* Ajusta al tamaño de tu logo */
+  height: auto;
+  display: block;
+  margin-left: 10px; /* Espacio a la izquierda del logo */
+  margin-top: 10px;
+}
+
+/* Barra de navegación debajo del logo */
+.navbar {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Centra los elementos de la barra de navegación horizontalmente */
+.navbar-nav {
+  display: flex; /* Establece los elementos de la navegación en línea */
+  justify-content: center; /* Centra los elementos de navegación */
+  flex-grow: 1; /* Asegura que la barra de navegación ocupe todo el espacio disponible */
+}
+
+/* Centra el contenedor de navegación dentro de la barra de navegación */
+.navbar-collapse {
+  justify-content: center; /* Centra los elementos de navegación */
+  flex-grow: 1; /* Asegura que el contenedor de navegación ocupe todo el espacio disponible */
+}
+
+/* Contenedor de navegación */
+.navbar-collapse {
+  justify-content: center; /* Centrar los enlaces de navegación */
+}
+
+/* Estilos para los elementos de la barra de navegación */
+.navbar-nav .nav-link {
+  color: #000; /* Color inicial de los enlaces */
+  transition: color 0.3s; /* Transición suave para el cambio de color */
+}
+
+/* Estilos para el enlace de la página actual */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-item:hover .nav-link {
+  color: rgb(211, 104, 104);
+  border-bottom: 3px solid black; /* Barra indicadora para la página actual */
+}
+
+/* Elimina la barra inferior en hover, solo la queremos en el enlace activo */
+.navbar-nav .nav-item:hover .nav-link {
+  border-bottom: none;
+}
+
+/* Añade una transición suave para el indicador de la página actual */
+.nav-link.active {
+  transition: border-bottom 0.3s;
+}
+
+/* Estilos adicionales para mejorar el hover de los enlaces */
+.navbar-nav .nav-link:not(.active):hover {
+  color: black; /* Cambia a azul oscuro cuando se pasa el cursor por encima */
+}
+/*FIN CABERA*/
+
+
+
+
+
+/*INICIO DE CONTENIDO*/
+/* Sección de Contacto */
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 0;
+  background-color: #f9f9f9; /* Fondo claro para la sección */
+}
+
+/* Contact Info */
+.contact-info {
+  flex-basis: 45%; /* Aproximadamente la mitad del ancho del contenedor */
+  background: #fff; /* Fondo blanco para la tarjeta de contacto */
+  padding: 20px;
+  margin-bottom: 20px; /* Espacio debajo de la tarjeta */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+.contact-info h3 {
+  margin-bottom: 15px; /* Espacio debajo del título */
+  color: #333; /* Color del texto */
+}
+
+.contact-info p,
+.contact-info a {
+  display: flex;
+  align-items: center;
+  color: #333; /* Color del texto */
+  text-decoration: none; /* Remover subrayado de enlaces */
+  padding: 5px 0; /* Espacio arriba y abajo de cada elemento */
+  border-bottom: 1px solid #eaeaea; /* Línea separadora */
+}
+
+.contact-info p:last-child,
+.contact-info a:last-child {
+  border-bottom: none; /* Remover la línea del último elemento */
+}
+
+.contact-info i {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.contact-info a:hover i {
+  opacity: 0.7; /* Efecto al pasar el cursor */
+  cursor: pointer; /* Cambiar el cursor a una manita */
+}
+
+/* Contact Form */
+.contact-form {
+  flex-basis: 45%; /* Aproximadamente la mitad del ancho del contenedor */
+  background: #fff; /* Fondo blanco para el formulario */
+  padding: 20px;
+  margin-bottom: 20px; /* Espacio debajo del formulario */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+.contact-form h3 {
+  margin-bottom: 15px; /* Espacio debajo del título */
+  color: #333; /* Color del texto */
+}
+
+.contact-form form input,
+.contact-form form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #eaeaea; /* Bordes del input */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+.contact-form form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Color de fondo del botón */
+  color: #fff; /* Color del texto */
+  border: none; /* Remover bordes */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar el cursor a una manita */
+}
+
+.contact-form form button:hover {
+  background-color: #0056b3; /* Oscurecer el botón al pasar el cursor */
+}
+/* Mapa */
+.map {
+    flex-basis: 100%;
+    padding-bottom: 100%; 
+}
+
+.map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+/*FIN DE CONTENIDO*/
+
+
+
+
+
+/* INICIO DE FOOTER*/
+.site-footer {
+    background-color: #0f4d5a ;
+    color: white;
+    padding: 15px 0;
+  }
+  
+  .footer-column h3 {
+    color: #aaa;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .footer-contact li,
+  .footer-links li,
+  .footer-social li {
+    list-style: none;
+    margin-bottom: 1px;
+  }
+  
+  li a {
+    color: white; /* Puedes ajustar el color del texto según tus preferencias */
+  }
+  
+  li a:hover {
+    text-decoration: underline;
+    color: white; /* Puedes ajustar el color del texto al pasar el mouse por encima */
+  }
+  
+  .footer-contact li i,
+  .footer-social li a {
+    margin-right: 10px; /*Sangria*/
+    color: #aaa;
+  }
+  
+  .footer-social li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #555;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  }
+  
+  .footer-social li a:hover {
+    background-color: #ddd;
+    color: #333;
+  }
+  
+  .footer-bottom {
+    border-top: 2px solid black; /*linea*/
+    padding-top: 5px;
+    text-align: center;
+  }
+  
+  @media (max-width: 767px) {
+    .footer-column {
+      text-align: center;
+    }
+  
+    .footer-social,
+    .footer-legal {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  /* FIN DE FOOTER*/
