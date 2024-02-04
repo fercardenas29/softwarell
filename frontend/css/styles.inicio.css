@@ -76,7 +76,7 @@
 
 
 
-/* Contenedor principal */
+/*INICIO DE CONTENIDO*/
 .container-main {
   position: relative;
 }
@@ -133,6 +133,11 @@
     min-height: 100px; /* Ajusta esto para asegurarte de que el carrusel sea lo suficientemente alto */
   }
 }
+/*FIN DE CONTENIDO*/
+
+
+
+
 
 
 /* INICIO DE FOOTER*/
