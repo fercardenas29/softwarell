@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var fechaIngreso = document.getElementById('fechaIngreso');
     var fechaSalida = document.getElementById('fechaSalida');
   
-    // Establecer la fecha mínima como la fecha actual
+    // Establecer la fecha mínima como la fecha actual de la reserva
     var hoy = new Date();
     var fechaMinima = hoy.toISOString().split('T')[0];
     fechaIngreso.setAttribute('min', fechaMinima);
