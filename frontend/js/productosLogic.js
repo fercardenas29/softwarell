@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return decodeURIComponent(resultados[2].replace(/\+/g, ' '));
     }
   
-    // Obtener fechas de ingreso y salida de la URL
+    // Obtener fechas de ingreso y salida de la pagina inicio.html
     var fechaIngreso = obtenerParametroURL('fechaIngreso');
     var fechaSalida = obtenerParametroURL('fechaSalida');
   
