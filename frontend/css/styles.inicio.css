@@ -1,6 +1,4 @@
 /*INICIO CABERA*/
-/* Logo a la izquierda y menú de navegación debajo del logo */
-/* Asegura que el contenedor de la barra de navegación ocupe el ancho completo */
 .site-header .container {
   max-width: 100%; /* Anula cualquier max-width que Bootstrap pueda aplicar */
   flex-grow: 1; /* Asegura que el contenedor crezca para ocupar todo el espacio disponible */
@@ -195,14 +193,14 @@ li a:hover {
 .footer-contact li i,
 .footer-social li a {
   margin-right: 10px; /*Sangria*/
-  color: #aaa;
+  color: #053543 ;
 }
 
 .footer-social li a {
   display: inline-block;
   width: 40px;
   height: 40px;
-  background-color: #555;
+  background-color: #ebf2f4 ;
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
@@ -210,8 +208,8 @@ li a:hover {
 }
 
 .footer-social li a:hover {
-  background-color: #ddd;
-  color: #333;
+  background-color: #053543;
+  color: #ddd;
 }
 
 .footer-bottom {

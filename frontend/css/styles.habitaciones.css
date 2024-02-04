@@ -1,23 +1,44 @@
 /*INICIO CABERA*/
-/* Logo a la izquierda y menú de navegación debajo del logo */
-.site-header {
-  background-color: #fff; /* Fondo blanco para la cabecera */
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Asegura que el contenedor de la barra de navegación ocupe el ancho completo */
 .site-header .container {
   max-width: 100%; /* Anula cualquier max-width que Bootstrap pueda aplicar */
   flex-grow: 1; /* Asegura que el contenedor crezca para ocupar todo el espacio disponible */
 }
 
+.site-header {
+  background-color: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 #logo {
-  max-width: 200px; /* Ajusta al tamaño de tu logo */
+  max-width: 200px;
   height: auto;
-  display: block;
-  margin-left: 10px; /* Espacio a la izquierda del logo */
+  margin-left: 10px;
   margin-top: 10px;
+}
+
+.header-icons {
+  display: flex;
+}
+
+.header-icon {
+  margin-right: 20px;
+  color: #0f4d5a; /* Color de los iconos */
+  font-size: 25px; /* Tamaño de los iconos */
+  text-decoration: none;
+  transition: color 0.3s; /* Transición suave del color al pasar el cursor sobre los iconos */
+}
+
+.header-icon:hover {
+  color: #4494b3 ; /* Cambio de color al pasar el cursor sobre los iconos */
+}
+
+/* Espacio entre los iconos */
+.header-icon + .header-icon {
+  margin-left: 15px; /* Ajusta según sea necesario */
 }
 
 /* Barra de navegación debajo del logo */
@@ -71,6 +92,9 @@
   color: black; /* Cambia a azul oscuro cuando se pasa el cursor por encima */
 }
 /*FIN CABERA*/
+
+
+
 
   
   /* Estilos para la página de productos */
@@ -177,7 +201,14 @@
   
   /* Fin Estilos - Productos.html */
 
-  /* INICIO DE FOOTER*/
+
+
+
+
+
+
+
+/* INICIO DE FOOTER*/
 .site-footer {
   background-color: #0f4d5a ;
   color: white;
@@ -209,14 +240,14 @@ li a:hover {
 .footer-contact li i,
 .footer-social li a {
   margin-right: 10px; /*Sangria*/
-  color: #aaa;
+  color: #053543 ;
 }
 
 .footer-social li a {
   display: inline-block;
   width: 40px;
   height: 40px;
-  background-color: #555;
+  background-color: #ebf2f4 ;
   text-align: center;
   line-height: 40px;
   border-radius: 50%;
@@ -224,8 +255,8 @@ li a:hover {
 }
 
 .footer-social li a:hover {
-  background-color: #ddd;
-  color: #333;
+  background-color: #053543;
+  color: #ddd;
 }
 
 .footer-bottom {
