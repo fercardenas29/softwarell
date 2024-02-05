@@ -1,4 +1,3 @@
-// productosLogic.js
 document.addEventListener('DOMContentLoaded', function() {
     // Función para obtener parámetros de la URL
     function obtenerParametroURL(nombre) {
@@ -20,4 +19,23 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fechaSalida) {
       document.getElementById('fecha-salida').value = fechaSalida;
     }
+
+    // Agregar la lógica de los botones para agregar al carrito
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+          const name = this.getAttribute('data-name');
+          const price = parseFloat(this.getAttribute('data-price'));
+
+          // Agregar el producto al arreglo del carrito y guardarlo en localStorage
+          const newCartItem = { name, price };
+          let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+          cartItems.push(newCartItem);
+          localStorage.setItem('cart', JSON.stringify(cartItems));
+
+          // Aquí podrías incluir alguna lógica para actualizar visualmente
+          // que el producto ha sido añadido, como un mensaje de confirmación
+      });
+    });
+
+  // ... (cualquier otra lógica que necesites)
 });  

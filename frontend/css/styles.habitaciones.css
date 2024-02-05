@@ -96,7 +96,8 @@
 
 
 
-  
+
+/*INICIO CONTENIDO*/
   /* Estilos para la página de productos */
   .product-page {
     padding: 20px;
@@ -198,9 +199,25 @@
     background-color: #fff; /* O el color que prefieras */
     color: #000;
   }
-  
-  /* Fin Estilos - Productos.html */
 
+.add-to-cart {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #105564 ; /* Color por defecto */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Suavizar la transición de color */
+}
+
+.add-to-cart:hover {
+  background-color: #688ea1   ; /* Color al pasar el cursor */
+}
+
+  /* Fin Estilos - Productos.html */
+/*FIN CONTENIDO*/
 
 
 
