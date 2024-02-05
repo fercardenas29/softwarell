@@ -102,7 +102,7 @@
 /* Estilos para el contenedor del carrito */
 .shopping-cart-container {
     width: 100%;
-    max-width: 60%;
+    max-width: 75%;
     margin: 0 auto;
     padding: 20px;
 }
@@ -128,14 +128,19 @@
     flex-grow: 1;
 }
 
-/* Estilos para el botón de eliminar producto */
+/* Estilo por defecto del botón delete */
 .cart-item-delete {
-    margin-left: 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+  background-color: #04253e ; /* Color de fondo rojo por defecto */
+  color: white; /* Color de texto blanco */
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transición suave para el cambio de color */
+}
+
+/* Estilo del botón delete cuando el cursor pasa por encima */
+.cart-item-delete:hover {
+  background-color: #a0c0d0; /* Color de fondo más oscuro cuando el cursor está encima */
 }
 
 /* Estilos para el resumen del carrito */
@@ -144,12 +149,53 @@
     margin-top: 20px;
 }
 
-.cart-summary button {
-    padding: 10px 20px;
-    background-color: green;
-    color: white;
-    border: none;
-    cursor: pointer;
+/* Estilo por defecto del botón de seguir comprando */
+#continue-shopping {
+  background-color: #0f4d5a; /* Color de fondo por defecto */
+  color: white; /* Color de texto por defecto */
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
 }
 
+/* Estilo del botón cuando el cursor pasa por encima */
+#continue-shopping:hover {
+  background-color: #4494b3; /* Color de fondo cuando el cursor está encima */
+}
+
+
+/* Estilos para pantallas de tabletas */
+@media (max-width: 768px) {
+  /* Estilos que se aplicarán cuando la pantalla tenga 768px o menos */
+  .login-container, .product-page, #fechas-reserva {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Adaptaciones para el formulario y botones */
+  .cart-item-delete {
+    padding: 5px;
+  }
+  
+  #continue-shopping {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Estilos para pantallas de teléfonos móviles */
+@media (max-width: 100px) {
+  /* Estilos que se aplicarán cuando la pantalla tenga 576px o menos */
+  .login-container, .product-page, #fechas-reserva {
+    padding: 10px;
+  }
+  
+  /* Más adaptaciones para el formulario y botones si son necesarias */
+}
 /*FIN DE CONTENIDO*/
