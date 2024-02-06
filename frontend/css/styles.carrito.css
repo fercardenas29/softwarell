@@ -169,6 +169,26 @@
   background-color: #4494b3; /* Color de fondo cuando el cursor está encima */
 }
 
+/* Estilo por defecto del botón de seguir comprando */
+#complete-purchase {
+  background-color: #0f4d5a; /* Color de fondo por defecto */
+  color: white; /* Color de texto por defecto */
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+}
+
+/* Estilo del botón cuando el cursor pasa por encima */
+#complete-purchase:hover {
+  background-color: #4494b3; /* Color de fondo cuando el cursor está encima */
+}
+
 
 /* Estilos para pantallas de tabletas */
 @media (max-width: 768px) {

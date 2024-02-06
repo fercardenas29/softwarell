@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItemsElement = document.getElementById('cart-items');
     const cartTotalElement = document.getElementById('cart-total');
     const continueShoppingButton = document.getElementById('continue-shopping');
+    const completePurchaseButton = document.getElementById('complete-purchase');
 
     // Cargar los elementos del carrito desde localStorage o iniciar con un array vacío si no hay nada en localStorage
     let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
@@ -48,9 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCartItems(); // Mostrar los elementos del carrito al cargar la página
     }
 
-    // Evento para el botón de seguir comprando
+    // Evento para el botón de seguir comprando continue-shopping
     continueShoppingButton.addEventListener('click', () => {
         window.location.href = 'habitaciones.html';
+    });
+
+    // Evento para el botón de seguir comprando complete-purchase
+    completePurchaseButton.addEventListener('click', () => {
+        window.location.href = 'completarCompra.html';
     });
 
     // Iniciar el estado del carrito al cargar la página
