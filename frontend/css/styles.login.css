@@ -110,6 +110,11 @@
     padding-top: 40px; /* Adjust the padding to position your form appropriately */
 }
 
+.shopping-cart-container h1 {
+    text-align: center; /* Alinea el texto a la izquierda */
+    padding-left: 15px; /* Añade un poco de padding para alinear con el formulario, ajusta según sea necesario */
+}
+
 /* Styles for the tabs at the top of the forms */
 .tabs {
     display: flex;
