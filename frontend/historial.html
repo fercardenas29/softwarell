@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="css/img/4b664fa9-f73a-4441-8592-42aedcaafd50.jpeg">
+    <title>Hotel Copo de Nieve | Historial</title>
+    <link rel="stylesheet" href="css/styles.historial.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="inicio.html">
+            <img src="css/img/nombreHotel.png" alt="Logo" id="logo">
+          </a>
+        <div class="header-icons">
+            <a href="carrito.html" class="header-icon"><i class="fas fa-shopping-cart"></i></a>
+            <a href="login.html" class="header-icon"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Customer Data Column -->
+            <div class="col-12 mb-4">
+                <div class="customer-data-block">
+                    <h2>Datos del Cliente</h2>
+                    <p id="nombreCliente">[Nombre del Cliente]</p>
+                    <p id="correoCliente">[Correo del Cliente]</p>
+                    <p>Fecha de Ingreso: [Fecha Actual]</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Purchase Summary Column -->
+            <div class="col-md-8 mb-4">
+                <div class="purchase-summary-block">
+                    <h2>Resumen de Compras</h2>
+                    <p>[Resumen de Compras o 'Historial vacío']</p>
+                </div>
+            </div>
+            <!-- Payment Column -->
+            <div class="col-md-4">
+                <div class="payment-block">
+                    <h2>Pago</h2>
+                    <button class="btn btn-success">Tarjeta Bancaria</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/logicHistorial.js"></script>
+</body>
+</html>
