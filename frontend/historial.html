@@ -28,7 +28,7 @@
                     <h2>Datos del Cliente</h2>
                     <p id="nombreCliente">[Nombre del Cliente]</p>
                     <p id="correoCliente">[Correo del Cliente]</p>
-                    <p>Fecha de Ingreso: [Fecha Actual]</p>
+                    <p id="fecha-ingreso">Fecha de Ingreso: [Fecha Actual]</p>
                 </div>
             </div>
         </div>
@@ -37,19 +37,46 @@
             <div class="col-md-8 mb-4">
                 <div class="purchase-summary-block">
                     <h2>Resumen de Compras</h2>
-                    <p>[Resumen de Compras o 'Historial vacío']</p>
+                    <div id="booking-summary">
+                        <!-- Aquí se mostrarán los detalles de la reserva confirmada -->
+                        <p>[Resumen de Compras o 'Historial vacío']</p>
+                    </div>
                 </div>
             </div>
             <!-- Payment Column -->
             <div class="col-md-4">
                 <div class="payment-block">
                     <h2>Pago</h2>
-                    <button class="btn btn-success">Tarjeta Bancaria</button>
+                    <button class="btn btn-primary mt-2" id="confirm-button" data-toggle="modal" data-target="#confirmationModal" type="submit">Confirmar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal de Confirmación -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmationModalLabel">Confirmar Reserva</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ¿Estás seguro de que quieres confirmar la reserva?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button type="button" class="btn btn-primary" id="confirm-purchase">Sí</button>
+            </div>
+          </div>
+        </div>
+    </div>
     
-    <script src="js/logicHistorial.js"></script>
+    <!-- Al final de tu <body>, antes de los scripts de tu sitio -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/historialLogic.js"></script>
 </body>
 </html>

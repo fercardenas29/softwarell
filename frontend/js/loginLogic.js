@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var passwordInput = document.querySelector('#loginForm input[type="password"]').value;
         
         // Aquí deberías implementar la lógica de verificación de las credenciales reales
-        if (emailInput === 'usuario@example.com' && passwordInput === 'contraseña') {
+        if (emailInput === 'usuario@example.com' && passwordInput === '123') {
             // Suponiendo que también tienes un campo para el nombre del cliente en tu formulario real
             var nombreCliente = "Nombre_usuario Apellido_usuario"; // Este valor debería obtenerse de tu sistema o base de datos
             

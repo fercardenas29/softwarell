@@ -132,9 +132,18 @@ p {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave */
 }
 
-/* Asegúrate de que los botones no sean demasiado anchos en pantallas grandes */
-.btn-success {
-  max-width: 300px; /* Ancho máximo para el botón */
-  width: 100%; /* El botón se expande para llenar el contenedor */
+/* Form button styles */
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #0f4d5a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #4494b3;
 }
 /*FIN CONTENIDO*/
