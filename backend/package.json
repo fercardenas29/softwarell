@@ -1,11 +1,16 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Back project",
+  "description": "Base de Datos ",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+
   },
-  "author": "Group7",
+  "keywords":[
+    "Habitacion"
+  ],
+  "author": "Mattew",
   "license": "ISC"
 }
