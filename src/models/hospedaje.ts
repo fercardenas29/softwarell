@@ -4,15 +4,26 @@ const HospSchema = new mongoose.Schema({
 
     nombre:{
         type: String,
-        require: [true, "ingresar nombre"]
+        required: [true, "ingresar nombre"]
     },
     precio:{
-        type: BigInt64Array,
-        require: [true, "ingresar nombre"]
+        type: Number,
+        required: [true, "ingresar nombre"]
     },
     cantidad:{
-        type: BigInt64Array,
-        require: [true, "ingresar cantidad"]
+        type: Number,
+        required: [true, "ingresar cantidad"]
+    },
+    detalle:{
+        type: String,
+        required: [true, "ingresar cantidad"]
     }
-})
-export default mongoose.models.hospedaje || mongoose.model('hospedaje', HospSchema) 
+
+},
+{
+    timestamps: true,
+    versionKey: false
+}
+
+)
+export const HospedajeModel = mongoose.models.Hospedaje || mongoose.model('Hospedaje', HospSchema);
