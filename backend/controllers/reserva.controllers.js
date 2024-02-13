@@ -1,5 +1,5 @@
-const habitacion = require("../models/habitacion");
-var Habitacion = require("../models/habitacion");
+const reserva = require("../models/reserva");
+var Reserva = require("../models/reserva");
 
 var controller = {
     inicio: function(req, res){
@@ -8,60 +8,60 @@ var controller = {
         });
     },
 
-    saveHabitacion: async function(req, res){
+    saveReserva: async function(req, res){
         try{
-            var habitacion = new Habitacion();
+            var reserva = new Reserva();
             var params = req.body; 
-            habitacion.nombre = params.nombre;
-            habitacion.precio = params.precio;
-            habitacion.descripcion = params.descripcion;
+            reserva.nombre = params.nombre;
+            reserva.precio = params.precio;
+            reserva.descripcion = params.descripcion;
             
-            var habitacionStored = await habitacion.save();
+            var reservaStored = await reserva.save();
 
-            if(!habitacionStored){
+            if(!reservaStored){
                 return res.status(400).send({message: "No se ha podido guardar la habitacion"});
             }
-            return res.status(201).send({habitacion: habitacionStored});
+            return res.status(201).send({reserva: reservaStored});
         } catch(error){
             return res.status(500).send({message: "Error al guardar la habitacion"});
         }
     },
-    getHabitacion:async function(req, res){
+    getReserva:async function(req, res){
         try{
-            const habitacion = await Habitacion.find({}).sort();
-            if(habitacion.length === 0){
+            const reserva = await Reserva.find({}).sort();
+            if(reserva.length === 0){
                 return res.status(404).send({message: "No hay habitaciones para mostrar"});
             }
-            return res.status(200).send({habitacion});
+            return res.status(200).send({reserva});
         } catch(error){
             return res.status(500).send({message: "Error al obtener las habitaciones"});
         }
     },
 
-    getHabitacion:async function(req, res){
+    getReserva:async function(req, res){
         try{
-            var habitacionId = req.params.id;
-            if(!habitacion){
+            var reservaId = req.params.id;
+            if(!reserva){
                 return res.status(404).send({message: "No hay habitaciones para mostrar"});
-                var habitacion= await habitacion.findById(habitacionId);
-                if (!habitacion){
+                var reserva= await reserva.findById(reservaId);
+                if (!reserva){
                     return res.status(404).send({message: "No hay habitaciones para mostrar"});
                 }
-                return res.status(200).send({habitacion});
+                return res.status(200).send({reserva});
             }
         } catch(error){
             return res.status(500).send({message: "Error al obtener las habitaciones"});
         }
     },
 
-    deleteHabitacion:async function(req, res){
+    deleteReserva:async function(req, res){
         try{
-            var habitacionId = req.params.id;
-            var habitacionRemoved = await Habitacion.findByIdAndDelete(habitacionId);
-            if(!habitacionRemoved){
+            var reservaId = req.params.id;
+            var reservaRemoved = await Reserva.findByIdAndDelete(reservaId);
+            if(!reservaRemoved){
                 return res.status(404).send({message: "No hay habitaciones para eliminar"});
             }
-            return res.status(200).send({habitacionRemoved});
+            return res.status(200).send({reservaRemoved});
         } catch(error){
             return res.status(500).send({message: "Error al eliminar la habitacion"});
         }

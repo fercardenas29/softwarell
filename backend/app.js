@@ -1,7 +1,9 @@
 var express = require('express');
 var bodyParser= require('body-parser');
 var app = express();
-var habitacionRoutes = require('./routes/habitacion.routes');
+var hospedajeRoutes = require('./routes/hospedaje.routes');
+var clienteRoutes = require('./routes/cliente.routes');
+var reservaRoutes = require('./routes/reserva.routes');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -14,5 +16,7 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.use('/',habitacionRoutes);
+app.use('/',hospedajeRoutes);
+app.use('/',clienteRoutes);
+app.use('/',reservaRoutes);
 module.exports = app;
