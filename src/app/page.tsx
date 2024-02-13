@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+//import conectarDB from '@/lib/dbConnect';
 
 function Page() {
     const [startDate, setStartDate] = React.useState<Date | null>(null);
@@ -33,3 +34,4 @@ function Page() {
 }
 
 export default Page;
+

@@ -18,7 +18,7 @@ function Navbar() {
                     </li>
                     <li>
                         <Link href="/Rooms">
-                            HABITACIONES
+                            HOSPEDAJE
                         </Link>
                     </li>
                         <Link href = "/Contact">
