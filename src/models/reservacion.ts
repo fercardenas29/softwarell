@@ -2,21 +2,13 @@ import mongoose from "mongoose";
 
 const ReservSchema = new mongoose.Schema({
 
-    nombre:{
+    id_hosp:{
         type: String,
         required: [true, "ingresar nombre"]
     },
-    precio:{
-        type: Number,
-        required: [true, "ingresar nombre"]
-    },
-    cantidad:{
-        type: Number,
-        required: [true, "ingresar cantidad"]
-    },
-    detalle:{
+    nombre_hosp:{
         type: String,
-        required: [true, "ingresar cantidad"]
+        required: [true, "ingresar nombre"]
     }
 
 },
