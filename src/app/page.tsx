@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-//import conectarDB from '@/lib/dbConnect';
+import { subDays } from 'date-fns'; // Importa la función subDays desde date-fns
 
 function Page() {
     const [startDate, setStartDate] = React.useState<Date | null>(null);
@@ -16,22 +16,32 @@ function Page() {
                 <div className="mb-4 flex items-center">
                     <div className="mr-2">
                         <label htmlFor="startDate" className="block text-sm font-medium text-gray-700">Fecha de inicio</label>
-                        <DatePicker id="startDate" selected={startDate} onChange={(date: Date) => setStartDate(date)} />
+                        <DatePicker 
+                            id="startDate" 
+                            selected={startDate} 
+                            onChange={(date: Date) => setStartDate(date)}
+                            // Restricción de fechas  al día actual
+                            minDate={subDays(new Date(), 0)} 
+                        />
                     </div>
                     <div>
                         <label htmlFor="endDate" className="block text-sm font-medium text-gray-700">Fecha de fin</label>
-                        <DatePicker id="endDate" selected={endDate} onChange={(date: Date) => setEndDate(date)} />
+                        <DatePicker 
+                            id="endDate" 
+                            selected={endDate} 
+                            onChange={(date: Date) => setEndDate(date)} 
+                            // Restricción de fechas posteriores al día actual
+                            minDate={new Date()} 
+                        />
                     </div>
                 </div>
                 {/* Aquí puedes agregar tu botón de búsqueda */}
                 <Link href="/Rooms">
                     <button className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Buscar</button>
                 </Link>
-               
             </div>
         </div>
     );
 }
 
 export default Page;
-

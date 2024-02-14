@@ -1,7 +1,7 @@
 function page() {
     return (
         <div>
-            HELLO WORLD
+            Pagina personal de cada usuario
         </div>
     );
 }

@@ -7,6 +7,9 @@ function Navbar() {
     return (
         <nav className='bg-slate-50 '>
             <Image src="/images/nombreHotel.png" alt="Logo Hotel" width={200} height={77} className='mt-5 ml-3'/>
+            <Link href="/Login" className='absolute top-0 right-0 mt-5 mr-3'>
+                <Image src="/images/login.png" alt="Logo" width={30} height={10} className='mt-5 ml-3' />
+            </Link>
             <hr className="border-t border-gray-300 w-full" />
             <div className='text-black container mx-auto flex justify-center items-center py-3'>
                 
