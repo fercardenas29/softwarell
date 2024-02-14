@@ -3,15 +3,21 @@ import Link from 'next/link';
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { subDays } from 'date-fns'; // Importa la función subDays desde date-fns
+import { subDays } from 'date-fns';
+import Image from 'next/image';
 
 function Page() {
     const [startDate, setStartDate] = React.useState<Date | null>(null);
     const [endDate, setEndDate] = React.useState<Date | null>(null);
 
     return (
-        <div className="flex justify-center items-center h-screen">
-            <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+        <div className="flex justify-center items-center h-">
+            {/* Establece la imagen como fondo */}
+            {/* <div className="absolute inset-0 z-0">
+                <Image src="/images/habitacion_1.jpeg" alt='fondo' layout="fill" objectFit="cover" />
+            </div> */}
+            {/* Contenedor adicional para los elementos */}
+            <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md relative z-10">
                 <h1 className="text-center text-2xl font-bold mb-4 text-black outline-black">¡Realiza ya tu reserva!</h1>
                 <div className="mb-4 flex items-center">
                     <div className="mr-2">
