@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import { HospedajeModel } from "@/models/hospedaje";
+import HospedajeModel from "@/models/hospedaje";
 import { request } from "http";
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
