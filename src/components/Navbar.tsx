@@ -11,10 +11,10 @@ function Navbar() {
                 <Image src="/images/login.png" alt="Logo" width={30} height={10} className='mt-5 ml-3' />
             </Link>
             <hr className="border-t border-gray-300 w-full" />
-            <div className='text-black container mx-auto flex justify-center items-center py-3 bg-cyan-900'>
+            <div className='text-black container mx-auto flex justify-center items-center py-3'>
                 
                 <ul className='flex gap-x-2 text-lg'>
-                    <li >
+                    <li>
                         <Link href="/" >
                             INICIO
                         </Link>

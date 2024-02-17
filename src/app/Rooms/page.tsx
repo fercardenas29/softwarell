@@ -1,22 +1,36 @@
-'use client';// En tu página de inicio
+'use client';
 
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { subDays } from 'date-fns';
 
+const loadHospedaje = async () => {
+    const res = await fetch('http://localhost:3000/api/hospedaje');
+    const { data } = await res.json(); // Destructurando para obtener directamente el array `data`
+    return data; // Devuelve el array
+}
+
 const Page = () => {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
+    const [hospedajes, setHospedajes] = useState<any[]>([]);
+
+    useEffect(() => {
+        loadHospedaje().then(data => setHospedajes(data)); // Actualiza el estado con el array obtenido
+    }, []);
 
     const handleSearch = () => {
         if (startDate && endDate) {
-            // Redirige a la página de Rooms con las fechas filtradas como parámetros de consulta
-            window.location.href = `/Rooms?startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`;
+            // Filtra las habitaciones disponibles según las fechas seleccionadas
+            const filteredHospedajes = hospedajes.filter(hospedaje =>
+                new Date(hospedaje.fechaInicio) >= startDate && new Date(hospedaje.fechaFin) <= endDate
+            );
+            setHospedajes(filteredHospedajes);
         } else {
-            // Si no se han seleccionado fechas, simplemente redirige a la página de Rooms sin filtrar
-            window.location.href = `/Rooms`;
+            // Si no se han seleccionado fechas, carga todas las habitaciones
+            loadHospedaje().then(data => setHospedajes(data));
         }
     };
 
@@ -46,6 +60,26 @@ const Page = () => {
                 </div>
                 <button className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={handleSearch}>Buscar</button>
             </div>
+            <section className='container mx-auto'>
+                <div className='grid grid-cols-3 gap-3 mt-10'>
+                    {hospedajes.map((hospedaje: any) => (
+                        <div key={hospedaje._id} className='p-3 hover:bg-slate-500 hover:cursor-pointer'>
+                            <h3 className='font-bold  mb-2'>Nombre : {hospedaje.nombre}</h3>
+                            <ul>
+                                <li>
+                                    <h4 className='font-bold  mb-2'>Precio: {hospedaje.precio}</h4>
+                                </li>
+                                <li>
+                                    <h4 className='font-bold  mb-2'>Cantidad : {hospedaje.cantidad}</h4>
+                                </li>
+                                <li>
+                                    <p>Detalle: {hospedaje.detalle}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+            </section>
         </div>
     );
 };
