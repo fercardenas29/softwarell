@@ -1,8 +1,7 @@
-// En tu página de inicio
 
-'use client'; // Asegúrate de colocar esta directiva al principio del archivo
-import Link from 'next/link';
+'use client';
 import React, { useState } from 'react';
+import Link from 'next/link';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { subDays } from 'date-fns';
