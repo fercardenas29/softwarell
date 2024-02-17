@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/frontend2.0/src/app/components/css/img/4b664fa9-f73a-4441-8592-42aedcaafd50.jpeg">
+    <title>Hotel Copo de Nieve | Inicio</title>
+    <link rel="stylesheet" href="/frontend2.0/src/app/components/css/styles.inicio.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container-main">
+        <header class="site-header">
+            <a href="inicio.html">
+                <img src="/frontend2.0/src/app/components/css/img/nombreHotel.png" alt="Logo" id="logo">
+              </a>
+            <div class="header-icons">
+                <a href="carrito.html" class="header-icon"><i class="fas fa-shopping-cart"></i></a>
+                <a href="login.html" class="header-icon"><i class="fas fa-user"></i></a>
+            </div>
+        </header>
+    
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="inicio.html">INICIO</a>
+                        <a class="nav-item nav-link" href="habitaciones.html">HABITACIONES</a>
+                        <a class="nav-item nav-link" href="contacto.html">CONTACTO</a>
+                        <a class="nav-item nav-link" href="acerca.html">ACERCA DE NOSOTROS</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Carrusel de imágenes -->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Aquí se agregan los estilos en línea para el fondo de cada .carousel-item -->
+                <div class="carousel-item active" style="background-image:url('https://zbr.com.mx/wp-content/uploads/2024/01/compressed_img-rV6ytGb5N31w2YoVe2XCXjpu.png');"></div>
+                <div class="carousel-item" style="background-image:url('https://media.traveler.es/photos/61aa07b0dbac39d0e2febb1b/16:9/w_2560%2Cc_limit/Gallery%2520Christmas_Suite_2021%2520(1).jpg');"></div>
+                <div class="carousel-item" style="background-image:url('https://img.freepik.com/fotos-premium/casa-nieve-palabras-nieve-techo_82740-459.jpg?w=996');"></div>
+            </div>
+            <!-- Controles del carrusel -->
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    
+        <div class="booking-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1>¡Realiza ya tu reserva!</h1>
+                        <form id="booking-form" action="habitaciones.html" method="GET">
+                            <div class="form-row justify-content-center">
+                                <div class="col-auto">
+                                    <input type="date" name="fechaIngreso" class="form-control" id="fechaIngreso" placeholder="Fecha de Ingreso" required>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="date" name="fechaSalida" class="form-control" id="fechaSalida" placeholder="Fecha de Salida" required>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary" id="botonBuscar" disabled>Buscar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Más elementos debajo del carrusel y formulario -->
+        <div class="additional-content">
+            <!-- Agrega aquí tus elementos adicionales -->
+            <p>Contenido adicional aquí.</p>
+        </div>
+    </div>
+    
+    <!-- Pie de página-->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-column">
+                    <h3>Hotel Copo de Nieve</h3>
+                    <ul class="footer-contact">
+                        <li><a href="https://maps.app.goo.gl/Cx6kARwJGkga7PUp9" target="_blank"><i class="fa fa-map-marker"></i>Av. Ladrón de Guevara E11-253, Quito 170143 Ecuador</a></li>
+                        <li><a href="tel:+59321234567" target="_blank"><i class="fa fa-phone"></i>+5932 1234567</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-6 footer-column">
+                    <h3>Más</h3>
+                    <ul class="footer-links">
+                        <li><a href="inicio.html">Inicio</a></li>
+                        <li><a href="habitaciones.html">Habitaciones</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="acerca.html">Acerca de nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 footer-column">
+                    <h3>Medios sociales</h3>
+                    <ul class="footer-social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©2024 All rights reserved | Powered by GRUPO7</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Bootstrap y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.11/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="js/inicioLogic.js"></script>
+</body>
+</html>
