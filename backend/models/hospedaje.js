@@ -7,8 +7,6 @@ var HospedajeSchema = Schema({
     cantidad: Number,
     detalle: String,
     disponible: Boolean,
-
-
 }, { collection: 'hospedaje' }); // Aquí especificamos el nombre de la colección
 module.exports = mongoose.model('Hospedaje', HospedajeSchema);
 

@@ -7,9 +7,9 @@ var multipartyMiddleWare = multiparty({uploadDir: './uploads'});
 //pagina de inicio
 router.get('/inicio', hospedajeController.inicio);
 //ver informacion de todas las habitaciones
-router.get('/habitaciones', hospedajeController.getHospedaje);
+router.get('/hospedaje', hospedajeController.getHospedaje);
 //ver informacion de una habitacion
-router.get('/habitacion/:id', hospedajeController.getHospedaje);
+router.get('/hospedaje/:id', hospedajeController.getHospedaje);
 
 
 module.exports=router;
