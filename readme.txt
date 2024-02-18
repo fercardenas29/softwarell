@@ -17,3 +17,5 @@ En este respositorio encontraras las carpetas
 3. Memo pad
 
 Estimados colegas, clonar este main en cada una de sus branchs para continuar de esta manera el trabajo en equipo. 
+
+Andamos valiendo vg
