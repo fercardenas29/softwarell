@@ -47,9 +47,4 @@ export class HospedajeService{
         return this._http.get(this.url + 'buscar-hospedaje/' + nombre, { headers: headers });
     }
 
-    // Método para buscar un libro por su detalle 
-    buscarHospedajePorDetalle(detalle: string): Observable<any> {
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.get(this.url + 'buscar-hospedaje/' + detalle, { headers: headers });
-    }
 }

@@ -42,8 +42,4 @@ export class ReservaService{
     }
 
     // Método para buscar un reserva por fecha
-    buscarReservaPorFecha(fecha: Date): Observable<any> {
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.get(this.url + 'buscar-reserva/' + fecha, { headers: headers });
-    }
 }
