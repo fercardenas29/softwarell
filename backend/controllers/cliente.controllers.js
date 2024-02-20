@@ -1,3 +1,5 @@
+// Conexion con el mongo 
+
 const cliente = require("../models/cliente");
 var Cliente = require("../models/cliente");
 

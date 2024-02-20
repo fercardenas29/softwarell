@@ -5,7 +5,8 @@ mongoose.set("strictQuery", false);
 var app=require('./app');
 
 // Conexión a MongoDB Atlas
-mongoose.connect('mongodb+srv://ferchocdh29:grupo7god@cluster1.cnyyzr0.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb://localhost:27017')
+//mongoose.connect('mongodb+srv://ferchocdh29:grupo7god@cluster1.cnyyzr0.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{
     console.log('Conexión exitosa con la base de datos');
     app.listen(port,()=>{
