@@ -1,126 +1,121 @@
-  
-  /*INICIO CONTENIDO*/
-    /* Estilos para la página de productos */
-    .product-page {
-      padding: 20px;
-      color: #fff; /* Texto en blanco para contraste */
-    }
-    
-    .product-page h2 {
-      text-align: center;
-      color: #000; /* Cambiar el color del texto a negro */
-      margin-bottom: 30px;
-      font-size: 2rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-    
-    .card {
-      background-color: #333; /* Fondo oscuro para las tarjetas */
-      color: #fff; /* Texto en blanco para contraste */
-      /* Resto de tus estilos para .card */
-    }
-    
-    .availability-badge {
-      position: absolute;
-      bottom: 10px; /* Colocar en la esquina inferior derecha */
-      right: 10px;
-      background-color: #dc3545; /* Fondo rojo para no disponibilidad */
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.8em;
-    }
-    
-    /* Cambia el color de fondo del aviso de disponibilidad según el estado */
-    .availability-badge.disponible {
-      background-color: #28a745; /* Fondo verde para disponibilidad */
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    .card {
-      background-color: #f8f9fa; /* Fondo claro para las tarjetas */
-      color: #000; /* Texto en negro para las tarjetas */
-      margin-bottom: 2rem;
-    }
-    
-    .card img {
-      width: 100%;
-      height: auto;
-      transition: transform 0.5s ease; /* Animación suave para las imágenes */
-    }
-    
-    .card:hover img {
-      transform: scale(1.05); /* Efecto de zoom al pasar el ratón sobre la imagen */
-    }
-    
-    /* Estilos para los textos de la tarjeta */
-    .card-title, .card-text {
-      font-weight: bold;
-    }
-    
-    /* Estilos para los elementos de la lista de las tarjetas */
-    .card-text ul li {
-      margin-bottom: 0.5rem;
-    }
-    
-    .card-text ul li::before {
-      content: "\2022";  /* Bala Unicode */
-      color: #007bff; /* Color para la bala, azul por ejemplo */
-      font-weight: bold;
-      display: inline-block; 
-      width: 1em;
-      margin-left: -1em;
-    }
-    
-    /* Más estilos responsivos si se necesitan */
-    @media (max-width: 576px) {
-      .product-page h2 {
-        font-size: 1.5rem;
-      }
-    }
-    
-    #fechas-reserva label {
-      color: #000; /* Cambia el color del texto a negro */
-    }
-    
-    #fechas-reserva {
-      display: flex;
-      justify-content: center;
-      gap: 20px; /* O el espacio que prefieras entre los inputs */
-      margin-bottom: 20px; /* Espacio debajo del bloque de fechas */
-    }
-    
-    #fechas-reserva input[type="date"] {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background-color: #fff; /* O el color que prefieras */
-      color: #000;
-    }
-  
-  .add-to-cart {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: #105564 ; /* Color por defecto */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Suavizar la transición de color */
-  }
-  
-  .add-to-cart:hover {
-    background-color: #688ea1   ; /* Color al pasar el cursor */
-  }
-  
-    /* Fin Estilos - Productos.html */
-  /*FIN CONTENIDO*/
-  
-  
-  
-  
+/*INICIO DE CONTENIDO*/
+/* Estilos para el contenedor del carrito */
+.shopping-cart-container {
+  width: 100%;
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos para cada artículo del carrito */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+}
+
+/* Estilos para la imagen y el nombre del producto */
+.cart-item img {
+  max-width: 50px;
+  margin-right: 10px;
+}
+
+.cart-item-name {
+  flex-grow: 1;
+}
+
+/* Estilo por defecto del botón delete */
+.cart-item-delete {
+background-color: #04253e ; /* Color de fondo rojo por defecto */
+color: white; /* Color de texto blanco */
+border: none;
+padding: 5px 10px;
+cursor: pointer;
+transition: background-color 0.3s; /* Transición suave para el cambio de color */
+}
+
+/* Estilo del botón delete cuando el cursor pasa por encima */
+.cart-item-delete:hover {
+background-color: #a0c0d0; /* Color de fondo más oscuro cuando el cursor está encima */
+}
+
+/* Estilos para el resumen del carrito */
+.cart-summary {
+  text-align: right;
+  margin-top: 20px;
+}
+
+/* Estilo por defecto del botón de seguir comprando */
+#continue-shopping {
+background-color: #0f4d5a; /* Color de fondo por defecto */
+color: white; /* Color de texto por defecto */
+border: none;
+padding: 10px 15px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+}
+
+/* Estilo del botón cuando el cursor pasa por encima */
+#continue-shopping:hover {
+background-color: #4494b3; /* Color de fondo cuando el cursor está encima */
+}
+
+/* Estilo por defecto del botón de seguir comprando */
+#complete-purchase {
+background-color: #0f4d5a; /* Color de fondo por defecto */
+color: white; /* Color de texto por defecto */
+border: none;
+padding: 10px 15px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+}
+
+/* Estilo del botón cuando el cursor pasa por encima */
+#complete-purchase:hover {
+background-color: #4494b3; /* Color de fondo cuando el cursor está encima */
+}
+
+
+/* Estilos para pantallas de tabletas */
+@media (max-width: 768px) {
+/* Estilos que se aplicarán cuando la pantalla tenga 768px o menos */
+.login-container, .product-page, #fechas-reserva {
+  width: 100%;
+  padding: 20px;
+}
+
+/* Adaptaciones para el formulario y botones */
+.cart-item-delete {
+  padding: 5px;
+}
+
+#continue-shopping {
+  padding: 10px;
+  font-size: 14px;
+}
+}
+
+/* Estilos para pantallas de teléfonos móviles */
+@media (max-width: 100px) {
+/* Estilos que se aplicarán cuando la pantalla tenga 576px o menos */
+.login-container, .product-page, #fechas-reserva {
+  padding: 10px;
+}
+
+/* Más adaptaciones para el formulario y botones si son necesarias */
+}
+/*FIN DE CONTENIDO*/
