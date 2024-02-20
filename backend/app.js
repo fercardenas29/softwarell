@@ -4,7 +4,7 @@ var app = express();
 var hospedajeRoutes = require('./routes/hospedaje.routes');
 var clienteRoutes = require('./routes/cliente.routes');
 var reservaRoutes = require('./routes/reserva.routes');
-var consultaRoutes = require('./routes/consulta.routes');
+var contactoRoutes = require('./routes/contacto.routes');
 
 
 app.use(bodyParser.urlencoded({extended:false}));
@@ -21,5 +21,5 @@ app.use((req,res,next)=>{
 app.use('/',hospedajeRoutes);
 app.use('/',clienteRoutes);
 app.use('/',reservaRoutes);
-app.use('/',consultaRoutes);
+app.use('/',contactoRoutes);
 module.exports = app;
