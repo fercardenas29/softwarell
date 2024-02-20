@@ -6,12 +6,10 @@ describe('PieComponent', () => {
   let component: PieComponent;
   let fixture: ComponentFixture<PieComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [PieComponent]
-    })
-    .compileComponents();
-    
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [PieComponent]
+    });
     fixture = TestBed.createComponent(PieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

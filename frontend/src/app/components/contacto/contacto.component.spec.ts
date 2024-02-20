@@ -6,12 +6,10 @@ describe('ContactoComponent', () => {
   let component: ContactoComponent;
   let fixture: ComponentFixture<ContactoComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ContactoComponent]
-    })
-    .compileComponents();
-    
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ContactoComponent]
+    });
     fixture = TestBed.createComponent(ContactoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
