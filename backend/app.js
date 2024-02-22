@@ -1,9 +1,7 @@
 var express = require('express');
 var bodyParser= require('body-parser');
 var app = express();
-var hospedajeRoutes = require('./routes/hospedaje.routes');
-var clienteRoutes = require('./routes/cliente.routes');
-var reservaRoutes = require('./routes/reserva.routes');
+var hotelRoutes = require('./routes/hotel.routes'); // Cambio de nombre del archivo de rutas
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -16,7 +14,6 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.use('/',hospedajeRoutes);
-app.use('/',clienteRoutes);
-app.use('/',reservaRoutes);
+app.use('/', hotelRoutes); // Usar las rutas unificadas de hotel
+
 module.exports = app;
