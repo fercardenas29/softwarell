@@ -1,22 +1,39 @@
-var express = require('express');
-var bodyParser= require('body-parser');
-var app = express();
-var hospedajeRoutes = require('./routes/hospedaje.routes');
-var clienteRoutes = require('./routes/cliente.routes');
-var reservaRoutes = require('./routes/reserva.routes');
+'use strict'
 
-app.use(bodyParser.urlencoded({extended:false}));
+//Cargar el modulo de express
+var express = require('express');
+
+//Cargar el archivo que contiene las rutas de la aplicacion
+var hotel_routes = require('./routes/nombre_base_de_datos');
+
+//Cargar el modulo de body-parser para trabajar con peticiones POST y PUT 
+var bodyParser = require('body-parser');
+
+//servidor que se va a encargar de recibir las peticiones y enviar las respuestas
+var app = express();
+
+// Analizar solicitudes con contenido tipo application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}));
+
+// Analizar solicitudes con contenido tipo application/json
 app.use(bodyParser.json());
+
+//configurar las cabeceras http
 app.use((req,res,next)=>{
+    //permitir el acceso a todos los dominios
     res.header('Access-Control-Allow-Origin','*');
-    res.header('Access-Control-Allow-Headers','Authorization, X-API-KEY, X-Request-With, Content-Type,Accept, Access-Control-Allow, Request-Method')
+    //Se define los encabezados que los clientes pueden usar en las solicitudes HTTP.
+    res.header('Access-Control-Allow-Headers','Authorization, X-API-KEY, X-Request-With,Content-Type,Accept, Access-Control-Allow,Request-Method');
+    //Se define los metodos que los clientes pueden usar en las solicitudes HTTP.
     res.header('Access-Control-Allow-Methods','GET,POST,OPTIONS,PUT,DELETE');
-    res.header('Allow','GET, POST, OPTIONS, PUT, DELETE');
-    res.header("Access-Control-Allow-Credentials", true);
+    //Para clientes que utilizan allow en vez de Access-Control-Allow-Methods
+    res.header('Allow','GET,POST,OPTIONS,PUT,DELETE');//
     next();
 });
 
-app.use('/',hospedajeRoutes);
-app.use('/',clienteRoutes);
-app.use('/',reservaRoutes);
-module.exports = app;
+//Rutas de la aplicacion
+//Las rutas de la aplicacion estan definidas en el archivo hotel.js de la carpeta routes
+app.use('/', hotel_routes);
+
+//Exportar el modulo app para que pueda ser utilizado en otros archivos
+module.exports = app;
