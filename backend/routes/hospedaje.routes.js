@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var router = express.Router();
 var hospedajeController = require('../controllers/hospedaje.controllers')
@@ -13,3 +14,4 @@ router.get('/hospedaje/:id', hospedajeController.getHospedaje);
 
 
 module.exports=router;
+*/

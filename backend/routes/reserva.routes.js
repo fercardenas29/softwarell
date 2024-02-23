@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var router = express.Router();
 var reservaController = require('../controllers/reserva.controllers')
@@ -17,3 +18,4 @@ router.delete('/reserva/:id', reservaController.deleteReserva);
 
 
 module.exports=router;
+*/

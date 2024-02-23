@@ -1,24 +1,13 @@
-'use strict'
+var mongoose = require('mongoose');
+var port = '3700';
+mongoose.Promise = global.Promise;
+var app = require('./app');
 
-//cargar el modulo dotenv para poder utilizar las variables de entorno
-require('dotenv').config();
-
-var mongoose = require('mongoose');// Cargar el modulo de mongoose
-var port = '3600'; //Puerto donde se ejecutara el servidor
-
-//Nos aseguramos que mongoose utilice las promesas nativas de JS
-mongoose.promise = global.Promise;
-
-var app = require('./app');//Cargar el modulo de app.js
-
-//Definir la cadena de conexion a la base de datos, y el servidor backend
-mongoose.connect(process.env.DATABASE)//DATABASE es la variable de entorno que contiene la URL de la base de datos
-    .then(() => {
-        console.log('La conexion a la base de datos se ha realizado correctamente');
-
-        //Si la conexion a la base de datos es correcta, entonces se ejecuta el servidor
-        app.listen(port, () => {
-            console.log('El servidor está corriendo en http://localhost:' + port);
-        })
+mongoose.connect('mongodb://localhost:27017/hospedaje')
+.then(()=>{
+    console.log("Conexion establecida con la BDD")
+    app.listen(port,()=>{
+        console.log("Conexion establecida en el url localhost:3700")
     })
-    .catch(err => console.log(err))
+})
+.catch(err=>console.log(err))

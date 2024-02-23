@@ -1,3 +1,4 @@
+/*
 const cliente = require("../models/cliente");
 var Cliente = require("../models/cliente");
 
@@ -71,3 +72,4 @@ var controller = {
 }
 
 module.exports = controller;
+*/

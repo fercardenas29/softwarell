@@ -1,141 +1,131 @@
-  
-  /*INICIO CONTENIDO*/
-    /* Estilos para la página de productos */
-    .product-page {
-      padding: 20px;
-      color: #fff; /* Texto en blanco para contraste */
-    }
-    
-    .product-page h2 {
-      text-align: center;
-      color: #000; /* Cambiar el color del texto a negro */
-      margin-bottom: 30px;
-      font-size: 2rem;
-      animation: fadeIn 2s ease-in-out;
-    }
-    
-    .card {
-      background-color: #333; /* Fondo oscuro para las tarjetas */
-      color: #fff; /* Texto en blanco para contraste */
-      /* Resto de tus estilos para .card */
-    }
-    
-    .availability-badge {
-      position: absolute;
-      bottom: 10px; /* Colocar en la esquina inferior derecha */
-      right: 10px;
-      background-color: #dc3545; /* Fondo rojo para no disponibilidad */
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.8em;
-    }
-    
-    /* Cambia el color de fondo del aviso de disponibilidad según el estado */
-    .availability-badge.disponible {
-      background-color: #28a745; /* Fondo verde para disponibilidad */
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    .card {
-      background-color: #f8f9fa; /* Fondo claro para las tarjetas */
-      color: #000; /* Texto en negro para las tarjetas */
-      margin-bottom: 2rem;
-    }
-    
-    .card img {
-      width: 100%;
-      height: auto;
-      transition: transform 0.5s ease; /* Animación suave para las imágenes */
-    }
-    
-    .card:hover img {
-      transform: scale(1.05); /* Efecto de zoom al pasar el ratón sobre la imagen */
-    }
-    
-    /* Estilos para los textos de la tarjeta */
-    .card-title, .card-text {
-      font-weight: bold;
-    }
-    
-    /* Estilos para los elementos de la lista de las tarjetas */
-    .card-text ul li {
-      margin-bottom: 0.5rem;
-    }
-    
-    .card-text ul li::before {
-      content: "\2022";  /* Bala Unicode */
-      color: #007bff; /* Color para la bala, azul por ejemplo */
-      font-weight: bold;
-      display: inline-block; 
-      width: 1em;
-      margin-left: -1em;
-    }
-    
-    /* Más estilos responsivos si se necesitan */
-    @media (max-width: 576px) {
-      .product-page h2 {
-        font-size: 1.5rem;
-      }
-    }
-    
-    #fechas-reserva label {
-      color: #000; /* Cambia el color del texto a negro */
-    }
-    
-    #fechas-reserva {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap; /* Permite que los elementos se ajusten en la siguiente fila */
-      gap: 20px; /* Espacio entre elementos */
-  }
-  
-  .fecha-reserva-item {
-      display: flex;
-      flex-direction: column; /* Pone la etiqueta encima del campo de entrada */
-      align-items: center; /* Centra el contenido de cada item de reserva */
-  }
-    #fechas-reserva input[type="date"] {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background-color: #fff; /* O el color que prefieras */
-      color: #000;
-    }
-  
-  .add-to-cart {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: #105564 ; /* Color por defecto */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Suavizar la transición de color */
-  }
-  
-  .add-to-cart:hover {
-    background-color: #688ea1   ; /* Color al pasar el cursor */
+/*INICIO CONTENIDO*/
+.product-page {
+  padding: 20px;
+}
+
+.product-page h2 {
+  text-align: center;
+  color: #000;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+/* Estilos para la tarjeta de habitaciones */
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  overflow: hidden; /* Asegura que todo quede dentro de la tarjeta */
+}
+
+.image-container {
+  position: relative;
+}
+
+.card-img {
+  width: 100%;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.card-img:hover {
+  transform: scale(1.1);
+}
+
+.card-body {
+  padding: 1rem;
+  flex-grow: 1; /* Asegura que el cuerpo de la tarjeta ocupe el espacio restante */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card-text ul li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+
+.card-text ul li:before {
+  content: "•";
+  padding-right: 0.5em;
+  color: #007bff;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.availability-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: white;
+  background-color: #dc3545;
+}
+
+.availability-badge.disponible {
+  background-color: #28a745;
+}
+
+.add-to-cart {
+  padding: 0.5rem 1rem;
+  background-color: #105564;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #688ea1;
+}
+
+/* Asegúrate de que el botón de agregar al carrito se muestre siempre a la derecha */
+.add-to-cart-link {
+  align-self: flex-end;
+}
+
+/* Media queries para ajustar el diseño en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
   }
 
-/* Media query para pantallas pequeñas */
-@media (max-width: 768px) {
-  #fechas-reserva {
-      flex-direction: column; /* Organiza los elementos de reserva en columna */
+  .card-footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .fecha-reserva-item {
-      width: 100%; /* Ocupa el ancho completo */
+
+  .add-to-cart-link {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
   }
 }
-  
-    /* Fin Estilos - Productos.html */
-  /*FIN CONTENIDO*/
-  
-  
-  
-  
+
+@media (max-width: 576px) {
+  .card-body {
+    padding: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .add-to-cart {
+    padding: 0.3rem 0.6rem;
+  }
+}

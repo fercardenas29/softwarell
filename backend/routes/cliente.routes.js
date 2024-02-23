@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var router = express.Router();
 var clienteController = require('../controllers/cliente.controllers')
@@ -17,3 +18,4 @@ router.delete('/cliente/:id', clienteController.deleteCliente);
 
 
 module.exports=router;
+*/

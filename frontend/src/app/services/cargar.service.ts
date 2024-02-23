@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Global } from './global';
+import { Injectable } from "@angular/core";
+import { Global } from "./global";
 @Injectable()
 export class CargarService{
     public url:string;
     constructor(){
         this.url=Global.url;
     }
-    peticionRequest(url:string,params:Array<string>,files:Array<File>,name:string){
-        return new Promise(function(resolve,reject){
-            var formData:any=new FormData();
-            var xhr=new XMLHttpRequest();
-            for(var i=0;i<files.length;i++){
-                formData.append(name,files[i],files[i].name);
+    peticionRequest(url:string, params:Array<string>, files:Array<File>, name:String){
+        return new Promise(function(resolve, reject){
+            var formData:any= new FormData();
+            var xhr = new XMLHttpRequest();
+            for(var i=0; i<files.length; i++){
+                formData.append(name, files[i], files[i].name);
             }
             xhr.onreadystatechange=function(){
                 if(xhr.readyState==4){
@@ -22,7 +22,8 @@ export class CargarService{
                     }
                 }
             }
-            xhr.open('POST',url,true);
+            //
+            xhr.open('POST', url, true);
             xhr.send(formData);
         })
     }

@@ -1,3 +1,4 @@
+/*
 const reserva = require("../models/reserva");
 var Reserva = require("../models/reserva");
 
@@ -71,3 +72,4 @@ var controller = {
 }
 
 module.exports = controller;
+*/

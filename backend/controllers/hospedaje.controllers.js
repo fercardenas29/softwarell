@@ -1,3 +1,4 @@
+/*
 const hospedaje = require("../models/hospedaje");
 var Hospedaje = require("../models/hospedaje");
 
@@ -39,3 +40,4 @@ var controller = {
 }
 
 module.exports = controller;
+*/

@@ -11,61 +11,36 @@
                 <label for="fecha-salida">Fecha de salida:</label>
                 <input type="date" id="fecha-salida" readonly>
             </div>
-        </div><br>        
+        </div><br>
 
-        <!-- Habitación Normal -->
-        <div class="card mb-3">
+        <div *ngFor="let habitacion of habitaciones" class="card mb-3">
             <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="css/img/habitacion_1.jpeg" class="card-img" alt="Habitación normal">
-                    <div class="availability-badge">No disponible</div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                    <h5 class="card-title">Habitación normal</h5>
-                    <p class="card-text">
+              <div class="col-md-4 image-container">
+                <img *ngIf="habitacion.imagen" [src]="url + 'get-imagen/' + habitacion.imagen" class="card-img" [alt]="habitacion.nombre">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title">{{ habitacion.nombre }}</h3>
+                  <div class="card-text">
                     <ul>
-                    <li>1 Cama grande</li>
-                    <li>1 Baño</li>
-                    <li>1 SmartTV</li>
-                    <li>Para 2 personas</li>
-                    <li>$$$ (Por noche)</li>
+                      <li>{{ habitacion.descripcion }}</li>
+                      <li>Precio: {{ habitacion.precio | currency }}</li>
+                      <li>Disponibles: {{ habitacion.cantidad }}</li>
                     </ul>
-                <a href="../reserva/reserva.component.html">
-                    <button class="add-to-cart" data-name="Habitación normal" data-price="50">Agregar al carrito</button>
-                </a>
+                  </div>
+                  <div class="card-footer">
+                    <div class="availability-badge" [class.disponible]="habitacion.disponible">{{ habitacion.disponible ? 'Disponible' : 'No disponible' }}</div>
+                    <a [routerLink]="['/reserva', habitacion._id]" class="add-to-cart-link">
+                      <button class="add-to-cart">Agregar al carrito</button>
+                    </a>
+                  </div>
                 </div>
-            </div>
+              </div>
             </div>
         </div>
-    
-        <!-- Suite Normal -->
-        <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="css/img/suite_1.jpeg" class="card-img" alt="Suit normal">
-                    <div class="availability-badge">Disponible</div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                    <h5 class="card-title">Suite normal</h5>
-                    <p class="card-text">
-                    <ul>
-                    <li>1 Cama Matrimonial</li>
-                    <li>1 Baño grande</li>
-                    <li>Jacuzzi</li>
-                    <li>1 Smart TV</li>
-                    <li>Para 3 personas</li>
-                    <li>$$$ (Por noche)</li>
-                    </ul>
-               
-                <a href="../reserva/reserva.component.html">
-                    <button class="add-to-cart" data-name="Suite normal" data-price="100">Agregar al carrito</button>
-                </a>
-                </div>
-            </div>
-            </div>
-        </div>
+          
+          
+
   
-    </div>
+</div>
 
