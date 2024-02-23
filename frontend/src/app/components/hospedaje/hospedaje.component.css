@@ -90,10 +90,15 @@
     #fechas-reserva {
       display: flex;
       justify-content: center;
-      gap: 20px; /* O el espacio que prefieras entre los inputs */
-      margin-bottom: 20px; /* Espacio debajo del bloque de fechas */
-    }
-    
+      flex-wrap: wrap; /* Permite que los elementos se ajusten en la siguiente fila */
+      gap: 20px; /* Espacio entre elementos */
+  }
+  
+  .fecha-reserva-item {
+      display: flex;
+      flex-direction: column; /* Pone la etiqueta encima del campo de entrada */
+      align-items: center; /* Centra el contenido de cada item de reserva */
+  }
     #fechas-reserva input[type="date"] {
       padding: 10px;
       border: 1px solid #ccc;
@@ -117,6 +122,16 @@
   .add-to-cart:hover {
     background-color: #688ea1   ; /* Color al pasar el cursor */
   }
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  #fechas-reserva {
+      flex-direction: column; /* Organiza los elementos de reserva en columna */
+  }
+  .fecha-reserva-item {
+      width: 100%; /* Ocupa el ancho completo */
+  }
+}
   
     /* Fin Estilos - Productos.html */
   /*FIN CONTENIDO*/
