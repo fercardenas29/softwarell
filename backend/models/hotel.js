@@ -1,14 +1,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-// Esquema para Hospedaje
-var HospedajeSchema = Schema({
-    nombre: String,
-    precio: Number,
-    cantidad: Number,
-    detalle: String,
-    disponible: Boolean,
-}, { collection: 'hospedaje' });
+// Esquema para Habitacion
+const HabitacionSchema = Schema({
+    nombre:String,
+    descripcion:String,
+    precio:Number,
+    cantidad:Number,
+    disponible:Boolean,
+    imagen:String
+});
 
 // Esquema para Reserva
 var ReservaSchema = Schema({
@@ -36,14 +37,14 @@ var ContactoSchema = Schema({
 }, { collection: 'contacto' });
 
 // Modelos
-var Hospedaje = mongoose.model('Hospedaje', HospedajeSchema);
+var Habitacion = mongoose.model('Habitacion', HabitacionSchema);
 var Reserva = mongoose.model('Reserva', ReservaSchema);
 var Cliente = mongoose.model('Cliente', ClienteSchema);
 var Contacto = mongoose.model('Contacto', ContactoSchema);
 
 // Exportar los modelos
 module.exports = {
-    Hospedaje: Hospedaje,
+    Habitacion: Habitacion,
     Reserva: Reserva,
     Cliente: Cliente,
     Contacto: Contacto
