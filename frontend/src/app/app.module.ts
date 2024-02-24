@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { HabitacionComponent } from './components/habitacion/habitacion.component';
 import { HomeComponent } from './components/home/home.component';
+import { TycComponent } from './components/tyc/tyc.component';
 
 //Declarar los modulos 
 @NgModule({
@@ -27,7 +28,8 @@ import { HomeComponent } from './components/home/home.component';
     SobreNosotrosComponent,
     ContactoComponent,
     HabitacionComponent,
-    HomeComponent
+    HomeComponent,
+    TycComponent
 
   ],
   imports: [

@@ -25,7 +25,15 @@
                                 <input type="date" name="fechaSalida" class="form-control" id="fechaSalida" [(ngModel)]="fechaSalida" required>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary" [disabled]="!fechasValidas()">Buscar</button>
+                                <button type="submit" class="btn btn-primary">
+                                    <a [routerLink]="['/habitacion']" style="color: white;">Buscar</a>
+                                </button>
+                                
+                                <!--
+                                    este es para que funcione el buscar pero con la logica para que filtrar fechas 
+                                    <button type="submit" class="btn btn-primary" [disabled]="!fechasValidas()">Buscar</button> 
+                                -->
+
                             </div>
                         </div>
                     </form>
