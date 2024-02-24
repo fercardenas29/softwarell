@@ -1,13 +1,16 @@
 var mongoose = require('mongoose');
-var port = '3700';
+var port = '3600';
 mongoose.Promise = global.Promise;
-var app = require('./app');
+mongoose.set("strictQuery", false);
+var app=require('./app');
 
-mongoose.connect('mongodb://localhost:27017/hospedaje')
+//mongoose.connect('mongodb+srv://ferchocdh29:grupo7god@cluster1.cnyyzr0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1')
+mongoose.connect('mongodb://localhost:27017/hotel')
 .then(()=>{
-    console.log("Conexion establecida con la BDD")
+    console.log('Conexión exitosa con la base de datos');
     app.listen(port,()=>{
-        console.log("Conexion establecida en el url localhost:3700")
-    })
+        console.log('Servidor corriendo correctamente en: localhost:3600');
+    });
 })
-.catch(err=>console.log(err))
+.catch(err => console.log(err));
+
