@@ -3,7 +3,7 @@ var port = '3700';
 mongoose.Promise = global.Promise;
 var app = require('./app');
 
-mongoose.connect('mongodb://localhost:27017/hospedaje')
+mongoose.connect('mongodb://localhost:27017/hotel')
 .then(()=>{
     console.log("Conexion establecida con la BDD")
     app.listen(port,()=>{

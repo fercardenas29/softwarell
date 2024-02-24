@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Habitacion } from '../../models/habitacion';
-import { HabitacionService } from '../../services/habitacion.services';
+import { Habitacion } from '../../models/hotel';
+import { HabitacionService } from '../../services/hotel.service';
 import { Global } from '../../services/global';
 
 @Component({

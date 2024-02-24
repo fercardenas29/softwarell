@@ -2,7 +2,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var peliculasRoutes = require('./routes/habitaciones.routes')
+var hotelRoutes = require('./routes/hotel.routes')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -15,5 +15,5 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.use('/', peliculasRoutes);
+app.use('/', hotelRoutes);
 module.exports=app;
