@@ -134,14 +134,14 @@ export class HabitacionService {
         this.url = Global.url;
     }
     // Ver todas las habitaciones
-    // http://localhost:3700/habitaciones
+    // http://localhost:3600/habitaciones
     getHabitaciones():Observable<any>{
         let headers=new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.get(this.url+'habitaciones',{headers:headers});
     }
 
     // Guardar habitacion
-    // http://localhost:3700/guardar-habitacion
+    // http://localhost:3600/guardar-habitacion
     guardarHabitacion(habitacion: Habitacion): Observable<any>{
         let params = JSON.stringify(habitacion);
 
@@ -150,14 +150,14 @@ export class HabitacionService {
     }
 
     // Ver habitacion
-    // http://localhost:3700/habitacion/:id
+    // http://localhost:3600/habitacion/:id
     getHabitacion(id: string): Observable<any>{
         let headers=new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.get(this.url+'habitacion/'+id,{headers:headers});
     }
 
     // Editar habitacion
-    // http://localhost:3700/habitacion/:id
+    // http://localhost:3600/habitacion/:id
     updateHabitacion(habitacion: Habitacion): Observable<any>{
         let params = JSON.stringify(habitacion);
 
@@ -166,7 +166,7 @@ export class HabitacionService {
     }
 
     // Eliminar habitacion
-    // http://localhost:3700/habitacion/:id
+    // http://localhost:3600/habitacion/:id
     deleteHabitacion(id: string): Observable<any>{
         let headers=new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.delete(this.url+'habitacion/'+id,{headers:headers});
