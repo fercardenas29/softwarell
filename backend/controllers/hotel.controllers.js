@@ -3,7 +3,7 @@
 const cliente = require("../models/hotel");
 var Cliente = require("../models/hotel");
 const habitacion = require("../models/hotel");
-var Habitacion = require("../models/hotel");
+var { Habitacion } = require("../models/hotel");
 const reserva = require("../models/hotel");
 var Reserva = require("../models/hotel");
 

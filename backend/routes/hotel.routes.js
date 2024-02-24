@@ -6,13 +6,6 @@ var controllers = require('../controllers/hotel.controllers');
 var multiparty = require('connect-multiparty');
 var multipartyMiddleWare = multiparty({ uploadDir: './uploads' });
 
-// Rutas para Cliente
-router.get('/hotel/inicio', controllers.clienteController.inicio); 
-router.post('/hotel/guardar', controllers.clienteController.saveCliente);
-router.get('/hotel/lista', controllers.clienteController.getCliente);
-router.get('/hotel/:id', controllers.clienteController.getCliente);
-router.delete('/hotel/:id', controllers.clienteController.deleteCliente);
-
 // Rutas para Habitacion
 // Página de inicio
 //router.get('/hotel/inicio-habitaciones', controllers.habitacionController.inicio);
@@ -30,6 +23,13 @@ router.delete('/hotel/habitacion/:id', controllers.habitacionController.deleteHa
 router.post('/hotel/subir-imagen/:id', multipartyMiddleWare, controllers.habitacionController.uploadImage);
 // Recuperar una imagen
 router.get('/hotel/get-imagen/:imagen', controllers.habitacionController.getImage);
+
+// Rutas para Cliente
+router.get('/hotel/inicio', controllers.clienteController.inicio); 
+router.post('/hotel/guardar', controllers.clienteController.saveCliente);
+router.get('/hotel/lista', controllers.clienteController.getCliente);
+router.get('/hotel/:id', controllers.clienteController.getCliente);
+router.delete('/hotel/:id', controllers.clienteController.deleteCliente);
 
 // Rutas para Reserva
 router.get('/hotel/inicio-reservas', controllers.reservaController.inicio);
