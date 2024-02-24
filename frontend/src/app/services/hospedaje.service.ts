@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Global } from "./global";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Hospedaje } from "../models/hospedaje";
+import { Habitacion } from "../models/habitacion";
 
 @Injectable()
 export class HospedajeService{
@@ -19,7 +19,7 @@ export class HospedajeService{
         return this._http.get(this.url+'hospedajes',{headers:headers});
     }
     //guardar hospedaje
-    guardarHospedaje(hospedaje:Hospedaje):Observable<any>{
+    guardarHospedaje(hospedaje:Habitacion):Observable<any>{
         let params=JSON.stringify(hospedaje);
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.post(this.url+'guardar-hospedaje',params,{headers:headers});
@@ -30,7 +30,7 @@ export class HospedajeService{
         return this._http.get(this.url+'hospedaje/'+id,{headers:headers});
     }
     //editar hospedaje
-    updateHospedaje(hospedaje:Hospedaje):Observable<any>{
+    updateHospedaje(hospedaje:Habitacion):Observable<any>{
         let params=JSON.stringify(hospedaje);
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.put(this.url+'hospedaje/'+hospedaje._id,params,{headers:headers});

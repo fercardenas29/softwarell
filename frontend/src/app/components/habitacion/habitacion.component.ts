@@ -5,11 +5,11 @@ import { Global } from '../../services/global';
 
 @Component({
   selector: 'app-habitaciones',
-  templateUrl: './hospedaje.component.html',
-  styleUrls: ['./hospedaje.component.css'],
+  templateUrl: './habitacion.component.html',
+  styleUrls: ['./habitacion.component.css'],
   providers: [HabitacionService]
 })
-export class HospedajeComponent implements OnInit{
+export class HabitacionComponent implements OnInit{
 
   public habitaciones: Habitacion[];
   public url: string;

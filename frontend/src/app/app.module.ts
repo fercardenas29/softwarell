@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EncabezadoComponent } from './components/encabezado/encabezado.component';
-import { HospedajeComponent } from './components/hospedaje/hospedaje.component';
 import { LoginComponent } from './components/login/login.component';  
 import { PieComponent } from './components/pie/pie.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
@@ -13,20 +12,19 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ContactoComponent } from './components/contacto/contacto.component';
-import { MostrarHospedajeComponent } from './components/hospedaje/mostrar-hospedaje/mostrar-hospedaje.component';
+import { HabitacionComponent } from './components/habitacion/habitacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EncabezadoComponent,
-    HospedajeComponent,
     LoginComponent,
     PieComponent,
     ReservaComponent,
     SesionComponent,
     SobreNosotrosComponent,
     ContactoComponent,
-    MostrarHospedajeComponent
+    HabitacionComponent
 
   ],
   imports: [
