@@ -6,7 +6,7 @@ export class Cliente{
         public correo:string,
         public cedula:string,
         public telefono:string,
-        ){}  
+        ){}   
 }
 
 export class Habitacion {
@@ -29,5 +29,15 @@ export class Reserva{
         public nombre_hosp:string,
         public fechaInput: Date,
         public fechaOutput: Date,
+        ){}   
+}
+
+export class Contacto{
+    constructor(
+        public _id:string,
+        public nombre:string,
+        public telefono:string,
+        public correo:string,
+        public mensaje:string,        
         ){}   
 }

@@ -1,12 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Habitacion } from "../models/hotel";
-import { Cliente } from "../models/hotel";
-import { Reserva } from "../models/hotel";
-
+import { Habitacion, Reserva, Contacto, Cliente } from "../models/hotel";
 import { Global } from "./global";
 import { Observable } from "rxjs";
-
 
 //Cliente
 @Injectable()
@@ -18,7 +14,7 @@ export class ClienteService{
         this.url=Global.url;
     }
     //ver cliente
-    //http://locahost:3600/cliente
+    //http://locahost:3700/cliente
     getClientes():Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.get(this.url+'clientes',{headers:headers});
@@ -46,6 +42,87 @@ export class ClienteService{
         return this._http.delete(this.url+'cliente/'+id,{headers:headers});
     }
 }
+
+//Contacto
+@Injectable()
+export class ContactoService{
+    public url:string;
+    constructor(
+        private _http:HttpClient
+    ){
+        this.url=Global.url;
+    }
+    //ver cliente
+    //http://locahost:3700/cliente
+    getContactos():Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.get(this.url+'contacto',{headers:headers});
+    }
+    //guardar cliente
+    guardarContacto(contacto:Contacto):Observable<any>{
+        let params=JSON.stringify(contacto);
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.post(this.url+'guardar-contacto',params,{headers:headers});
+    }
+    //ver cliente
+    getContacto(id:String):Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.get(this.url+'contacto/'+id,{headers:headers});
+    }
+    //editar cliente
+    updateContacto(contacto:Contacto):Observable<any>{
+        let params=JSON.stringify(contacto);
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.put(this.url+'contacto/'+contacto._id,params,{headers:headers});
+    }
+    //eliminar cliente
+    deleteContacto(id:String):Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.delete(this.url+'contacto/'+id,{headers:headers});
+    }
+}
+
+//Reserva
+@Injectable()
+export class ReservaService{
+    public url:string;
+    constructor(
+        private _http:HttpClient
+    ){
+        this.url=Global.url;
+    }
+    //ver reserva
+    //http://locahost:3700/reserva
+    getReservas():Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.get(this.url+'reservas',{headers:headers});
+    }
+    //guardar reserva
+    guardarReserva(reserva:Reserva):Observable<any>{
+        let params=JSON.stringify(reserva);
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.post(this.url+'guardar-reserva',params,{headers:headers});
+    }
+    //ver reserva
+    getReserva(id:String):Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.get(this.url+'reserva/'+id,{headers:headers});
+    }
+    //editar reserva
+    updateReserva(reserva:Reserva):Observable<any>{
+        let params=JSON.stringify(reserva);
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.put(this.url+'reserva/'+reserva._id,params,{headers:headers});
+    }
+    //eliminar reserva
+    deleteReserva(id:String):Observable<any>{
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.delete(this.url+'reseerva/'+id,{headers:headers});
+    }
+
+    // Método para buscar un reserva por fecha
+}
+
 
 //Habitacion
 @Injectable()
@@ -94,45 +171,4 @@ export class HabitacionService {
         let headers=new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.delete(this.url+'habitacion/'+id,{headers:headers});
     }
-}
-
-//Reserva
-@Injectable()
-export class ReservaService{
-    public url:string;
-    constructor(
-        private _http:HttpClient
-    ){
-        this.url=Global.url;
-    }
-    //ver reserva
-    //http://locahost:3600/reserva
-    getReservas():Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'reservas',{headers:headers});
-    }
-    //guardar reserva
-    guardarReserva(reserva:Reserva):Observable<any>{
-        let params=JSON.stringify(reserva);
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.post(this.url+'guardar-reserva',params,{headers:headers});
-    }
-    //ver reserva
-    getReserva(id:String):Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'reserva/'+id,{headers:headers});
-    }
-    //editar reserva
-    updateReserva(reserva:Reserva):Observable<any>{
-        let params=JSON.stringify(reserva);
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.put(this.url+'reserva/'+reserva._id,params,{headers:headers});
-    }
-    //eliminar reserva
-    deleteReserva(id:String):Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.delete(this.url+'reseerva/'+id,{headers:headers});
-    }
-
-    // Método para buscar un reserva por fecha
 }

@@ -1,11 +1,13 @@
+'use strict'
+
+const cliente = require("../models/hotel");
 var Cliente = require("../models/hotel");
-var Habitacion = require('../models/hotel');
+const habitacion = require("../models/hotel");
+var { Habitacion } = require("../models/hotel");
+const reserva = require("../models/hotel");
 var Reserva = require("../models/hotel");
-var fs  = require('fs');
-var path = require('path');
 
-
-//Cliente
+//Cliente.Controller
 var clienteController = {
     inicio: function(req, res){
         return res.status(200).send({
@@ -75,9 +77,11 @@ var clienteController = {
 
 }
 
+//Habitacion.Controller
+var fs  = require('fs');
+var path = require('path');
 
-//Habitacion 
-var habitacionController = {
+var habitacionController={
     getInicio:function(req, res){
         return res.status(201).send(
             "<h1>Hola 2</h1>"
@@ -212,11 +216,10 @@ var habitacionController = {
             }
         })
     }
-    
 }
 
 
-//Reserva
+//Reserva.Controller
 var reservaController = {
     inicio: function(req, res){
         return res.status(200).send({
@@ -286,9 +289,80 @@ var reservaController = {
 
 }
 
-// Exportar todos los controladores juntos
+//Contacto.Controller
+var contactoController = {
+    inicio: function(req, res){
+        return res.status(200).send({
+            message: "<h2> Bienvenidos </h2>"
+        });
+    },
+
+    saveContacto: async function(req, res){
+        try{
+            var contacto = new Contacto();
+            var params = req.body; 
+            contacto.nombre = params.nombre;
+            contacto.telf = params.telf;
+            contacto.email = params.email
+            contacto.descripcion = params.descripcion;
+            
+            var contactoStored = await contacto.save();
+
+            if(!contactoStored){
+                return res.status(400).send({message: "No se ha podido guardar el mensaje"});
+            }
+            return res.status(201).send({contacto: contactoStored});
+        } catch(error){
+            return res.status(500).send({message: "Error al guardar el mensaje"});
+        }
+    },
+    getContacto:async function(req, res){
+        try{
+            const contacto = await Contacto.find({}).sort();
+            if(contacto.length === 0){
+                return res.status(404).send({message: "No hay mensaje para mostrar"});
+            }
+            return res.status(200).send({contacto});
+        } catch(error){
+            return res.status(500).send({message: "Error al obtener el mensaje"});
+        }
+    },
+
+    getContacto:async function(req, res){
+        try{
+            var contactoId = req.params.id;
+            if(!contacto){
+                return res.status(404).send({message: "No hay habitaciones para mostrar"});
+                var contacto= await contacto.findById(contactoId);
+                if (!contacto){
+                    return res.status(404).send({message: "No hay habitaciones para mostrar"});
+                }
+                return res.status(200).send({contacto});
+            }
+        } catch(error){
+            return res.status(500).send({message: "Error al obtener las habitaciones"});
+        }
+    },
+
+    deleteContacto:async function(req, res){
+        try{
+            var contactoId = req.params.id;
+            var contactoRemoved = await Contacto.findByIdAndDelete(contactoId);
+            if(!contactoRemoved){
+                return res.status(404).send({message: "No hay habitaciones para eliminar"});
+            }
+            return res.status(200).send({contactoRemoved});
+        } catch(error){
+            return res.status(500).send({message: "Error al eliminar la habitacion"});
+        }
+    }
+
+
+}
+
 module.exports = {
-    clienteController: clienteController,
-    habitacionController: habitacionController,
-    reservaController: reservaController
-};
+    clienteController,
+    habitacionController,
+    reservaController,
+    contactoController
+}
