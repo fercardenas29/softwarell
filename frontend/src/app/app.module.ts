@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,9 +11,9 @@ import { ReservaComponent } from './components/reserva/reserva.component';
 import { SesionComponent } from './components/sesion/sesion.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { HabitacionComponent } from './components/habitacion/habitacion.component';
+import { HomeComponent } from './components/home/home.component';
 
 //Declarar los modulos 
 @NgModule({
@@ -25,7 +26,8 @@ import { HabitacionComponent } from './components/habitacion/habitacion.componen
     SesionComponent,
     SobreNosotrosComponent,
     ContactoComponent,
-    HabitacionComponent
+    HabitacionComponent,
+    HomeComponent
 
   ],
   imports: [
