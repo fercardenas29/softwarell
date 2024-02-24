@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { HabitacionComponent } from './components/habitacion/habitacion.component';
 
+//Declarar los modulos 
 @NgModule({
   declarations: [
     AppComponent,
