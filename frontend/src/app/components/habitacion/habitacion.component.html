@@ -30,8 +30,8 @@
                   </div>
                   <div class="card-footer">
                     <div class="availability-badge" [class.disponible]="habitacion.disponible">{{ habitacion.disponible ? 'Disponible' : 'No disponible' }}</div>
-                    <a [routerLink]="['/reserva', habitacion._id]" class="add-to-cart-link">
-                      <button class="add-to-cart">Agregar al carrito</button>
+                    <a [routerLink]="['/reserva']" class="add-to-cart-link">
+                      <button class="add-to-cart">Agregar a la Reserva</button>
                     </a>
                   </div>
                 </div>
