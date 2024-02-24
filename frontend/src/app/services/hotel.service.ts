@@ -14,7 +14,7 @@ export class ClienteService{
         this.url=Global.url;
     }
     //ver cliente
-    //http://locahost:3600/cliente
+    //http://locahost:3700/cliente
     getClientes():Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.get(this.url+'clientes',{headers:headers});
@@ -53,7 +53,7 @@ export class ContactoService{
         this.url=Global.url;
     }
     //ver cliente
-    //http://locahost:3600/cliente
+    //http://locahost:3700/cliente
     getContactos():Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.get(this.url+'contacto',{headers:headers});
@@ -92,7 +92,7 @@ export class ReservaService{
         this.url=Global.url;
     }
     //ver reserva
-    //http://locahost:3600/reserva
+    //http://locahost:3700/reserva
     getReservas():Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.get(this.url+'reservas',{headers:headers});
