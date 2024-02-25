@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente, Habitacion, Reserva } from '../../models/hotel';
 import { ClienteService , ReservaService } from '../../services/hotel.service';
+import { HabitacionService } from '../../services/hotel.service'; // Add the missing import statement
 
 declare var paypal: any;
 
@@ -12,34 +13,42 @@ declare var paypal: any;
 export class SesionComponent implements OnInit {
   public clienteActual: Cliente | null = null;
   public reservasConfirmadas: Reserva[] = [];
+  public habitacionService: HabitacionService; 
 
   constructor(
     private clienteService: ClienteService,
     private reservaService: ReservaService,
-  ) {}
+    private _habitacionService: HabitacionService
+  ) {
+    this.habitacionService = _habitacionService; // Inicializa la propiedad habitacionService
+
+  }
+
+  public totalCarrito: number = 0;
 
   ngOnInit(): void {
-    if ((window as any)['paypal']) { // Aquí se especifica 'any' para la expresión de índice
-      this.initializePayPalButton();
+    const totalCarrito = this.habitacionService.obtenerTotalCarritoDesdeLocalStorage(); // Obtener el total del carrito
+    if ((window as any)['paypal']) { // Verificar si paypal está definido en la ventana
+      this.initializePayPalButton(totalCarrito); // Pasar el total del carrito al inicializar el botón de PayPal
     } else {
-      // Agrega el script de PayPal si aún no está cargado
+      // Agregar el script de PayPal si aún no está cargado
       const script = document.createElement('script');
       script.src = 'https://www.paypal.com/sdk/js?currency=USD&client-id=AUtvW7SAEUXaG1SUQ1JbLMz9mrvyzFHsmeRBcn8l_bY-_Q1MGEkjicLc6ra_LlchwzFaYX-8kgJkDqy6';
       script.onload = () => {
-        this.initializePayPalButton();
+        this.initializePayPalButton(totalCarrito); // Pasar el total del carrito al inicializar el botón de PayPal
       };
       document.body.appendChild(script);
     }
-  }
+}
 
-initializePayPalButton(): void {
+initializePayPalButton(totalCarrito: number): void {
     paypal.Buttons({
       createOrder: (data: any, actions: any) => {
         return actions.order.create({
           purchase_units: [
             {
               amount: {
-                value: '100.00'
+                value: totalCarrito.toString() // Utilizar el total del carrito como el valor del pago
               }
             }
           ]
@@ -52,7 +61,8 @@ initializePayPalButton(): void {
         // Lógica en caso de error en el pago
       }
     }).render('#paypal-button-container');
-  }
+}
+
 
 
   cargarCliente(clienteId: string) {
@@ -112,4 +122,16 @@ initializePayPalButton(): void {
     const carritoJSON = localStorage.getItem('carrito');
     return carritoJSON ? JSON.parse(carritoJSON) : [];
   }
+/*
+  obtenerTotalCarritoDesdeLocalStorage(): number {
+    const carritoJSON = localStorage.getItem('carrito');
+    if (carritoJSON) {
+        const carrito = JSON.parse(carritoJSON);
+        this.totalCarrito = carrito.reduce((total: number, hab: Habitacion) => total + hab.precio, 0);
+    } else {
+        this.totalCarrito = 0; // Si no hay elementos en el carrito, el total es cero
+    }
+    return this.totalCarrito;
+}
+*/
 }

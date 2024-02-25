@@ -98,8 +98,11 @@ export class ReservaService{
 @Injectable()
 export class HabitacionService {
     public url: string;
+    private totalCarrito: number = 0;
 
+    // @ts-ignore
     private carritoSubject = new BehaviorSubject<Habitacion[]>(this.cargarCarritoDesdeLocalStorage());
+
 
     constructor(
         private _http:HttpClient
@@ -180,6 +183,18 @@ export class HabitacionService {
         console.log('Habitaciones en el carrito:', carrito); // Muestra por consola las habitaciones en el carrito
         return carrito;
     }       
+
+    obtenerTotalCarritoDesdeLocalStorage(): number {
+        const carritoJSON = localStorage.getItem('carrito');
+        if (carritoJSON) {
+            const carrito = JSON.parse(carritoJSON);
+            this.totalCarrito = carrito.reduce((total: number, hab: Habitacion) => total + hab.precio, 0);
+        } else {
+            this.totalCarrito = 0; // Si no hay elementos en el carrito, el total es cero
+        }
+        return this.totalCarrito;
+    }
+    
 
     // Método para cargar el carrito desde localStorage
     private cargarCarritoDesdeLocalStorage(): Habitacion[] {
