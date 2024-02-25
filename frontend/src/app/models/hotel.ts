@@ -23,9 +23,9 @@ export class Habitacion {
 
 export class Reserva{
     constructor(
-        public fechaInput: Date,
-        public fechaOutput: Date,
+        public fechaInput: Date | null,
+        public fechaOutput: Date | null,
         public habitaciones: string[],
-        public cliente: string[]
+        public cliente: string | null
     ){}   
 }

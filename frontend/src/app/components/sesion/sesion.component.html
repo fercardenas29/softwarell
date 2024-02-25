@@ -3,53 +3,53 @@
         <div class="row">
             <!-- Customer Data Column -->
             <div class="col-12 mb-4">
-                <div class="customer-data-block">
-                    <h2>Datos del Cliente</h2>
-                    <p id="nombreCliente">[Nombre del Cliente]</p>
-                    <p id="correoCliente">[Correo del Cliente]</p>
-                    <p id="fecha-ingreso">Fecha de Ingreso: [Fecha Actual]</p>
-                </div>
+              <div *ngIf="clienteActual" class="customer-data-block">
+                <h2>Datos del Cliente</h2>
+                <p><strong>Nombre:</strong> {{ clienteActual.nombre }} {{ clienteActual.apellido }}</p>
+                <p><strong>Correo:</strong> {{ clienteActual.correo }}</p>
+                <p><strong>Cédula:</strong> {{ clienteActual.cedula }}</p>
+                <p><strong>Teléfono:</strong> {{ clienteActual.telefono }}</p>
+              </div>
             </div>
         </div>
         <div class="row">
             <!-- Purchase Summary Column -->
             <div class="col-md-8 mb-4">
-                <div class="purchase-summary-block">
-                    <h2>Resumen de Compras</h2>
-                    <div id="booking-summary">
-                        <!-- Aquí se mostrarán los detalles de la reserva confirmada -->
-                        <p>[Resumen de Compras o 'Historial vacío']</p>
+              <div class="purchase-summary-block">
+                  <h2>Resumen de Compras</h2>
+                  <div *ngIf="reservasConfirmadas.length > 0; else emptySummary">
+                    <div *ngFor="let reserva of reservasConfirmadas">
+                      <p>Reserva realizada para las fechas: {{ reserva.fechaInput | date }} - {{ reserva.fechaOutput | date }}</p>
+                      <p>Habitaciones reservadas:
+                        <span *ngFor="let habitacionId of reserva.habitaciones; let i = index">
+                          {{ habitacionId }}<span *ngIf="i < reserva.habitaciones.length - 1">, </span>
+                        </span>
+                      </p>
                     </div>
-                </div>
+                  </div>
+                  <ng-template #emptySummary>
+                    <p>'Historial vacío'</p>
+                  </ng-template>
+              </div>
             </div>
             <!-- Payment Column -->
             <div class="col-md-4">
-                <div class="payment-block">
-                    <h2>Pago</h2>
-                    <button class="btn btn-primary mt-2" id="confirm-button" data-toggle="modal" data-target="#confirmationModal" type="submit">Confirmar</button>
-                </div>
+              <div class="payment-block">
+                  <h2>Pago</h2>
+                  <!-- Aquí se llama al método confirmarReserva() cuando se hace clic en el botón -->
+                  <button class="btn btn-primary mt-2" (click)="confirmarReserva()" type="button">Confirmar</button>
+              </div>
             </div>
         </div>
     </div>
 
     <!-- Modal de Confirmación -->
     <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="confirmationModalLabel">Confirmar Reserva</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ¿Estás seguro de que quieres confirmar la reserva?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-              <button type="button" class="btn btn-primary" id="confirm-purchase">Sí</button>
-            </div>
-          </div>
-        </div>
+      <!-- ... -->
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <!-- El botón "Sí" llama a confirmarReserva() y cierra el modal -->
+          <button type="button" class="btn btn-primary" (click)="confirmarReserva()">Sí</button>
+      </div>
     </div>
     
