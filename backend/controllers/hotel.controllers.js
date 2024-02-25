@@ -260,13 +260,16 @@ var reservaController = {
     getReserva: async function(req, res) {
         try {
             var reservaId = req.params.id;
-            var reserva = await Reserva.findById(reservaId);
-            if (!reserva) {
-                return res.status(404).send({ message: "No hay reserva para mostrar" });
+            if(!reserva){
+                return res.status(404).send({message: "No hay habitaciones para mostrar"});
+                var reserva= await reserva.findById(reservaId);
+                if (!reserva){
+                    return res.status(404).send({message: "No hay habitaciones para mostrar"});
+                }
+                return res.status(200).send({reserva});
             }
-            return res.status(200).send({ reserva });
-        } catch(error) {
-            return res.status(500).send({ message: "Error al obtener la reserva" });
+        } catch(error){
+            return res.status(500).send({message: "Error al obtener las habitaciones"});
         }
     },  
 

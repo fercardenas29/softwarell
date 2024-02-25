@@ -13,33 +13,33 @@
           </div>
       </div><br>
 
-      <div *ngFor="let habitacion of habitaciones" class="card mb-3">
-          <div class="row no-gutters">
-            <div class="col-md-4 image-container">
-              <img *ngIf="habitacion.imagen" [src]="url + 'get-imagen/' + habitacion.imagen" class="card-img" [alt]="habitacion.nombre">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h3 class="card-title">{{ habitacion.nombre }}</h3>
-                <div class="card-text">
-                  <ul>
-                    <li>{{ habitacion.descripcion }}</li>
-                    <li>Precio: {{ habitacion.precio | currency }}</li>
-                    <li>Disponibles: {{ habitacion.cantidad }}</li>
-                  </ul>
-                </div>
-                <div class="card-footer">
-                  <div class="availability-badge" [class.disponible]="habitacion.disponible">{{ habitacion.disponible ? 'Disponible' : 'No disponible' }}</div>
-                  <a [routerLink]="['/reserva', habitacion._id]" class="add-to-cart-link">
-                    <button class="add-to-cart">Agregar al carrito</button>
-                  </a>
+        <div *ngFor="let habitacion of habitaciones" class="card mb-3">
+            <div class="row no-gutters">
+              <div class="col-md-4 image-container">
+                <img *ngIf="habitacion.imagen" [src]="url + 'get-imagen/' + habitacion.imagen" class="card-img" [alt]="habitacion.nombre">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title">{{ habitacion.nombre }}</h3>
+                  <div class="card-text">
+                    <ul>
+                      <li>{{ habitacion.descripcion }}</li>
+                      <li>Precio: {{ habitacion.precio | currency }}</li>
+                      <li>Disponibles: {{ habitacion.cantidad }}</li>
+                    </ul>
+                  </div>
+                  <div class="card-footer">
+                    <div class="availability-badge" [class.disponible]="habitacion.disponible">{{ habitacion.disponible ? 'Disponible' : 'No disponible' }}</div>
+                    <a [routerLink]="['/reserva', habitacion._id]" class="add-to-cart-link">
+                      <button class="add-to-cart">Agregar al carrito</button>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-      </div>
-        
-        
+        </div>
+          
+          
 
 
 </div>

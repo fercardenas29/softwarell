@@ -13,9 +13,6 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 import { HttpClientModule } from '@angular/common/http';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { HabitacionComponent } from './components/habitacion/habitacion.component';
-import { HomeComponent } from './components/home/home.component';
-import { TycComponent } from './components/tyc/tyc.component';
-import { CrearUsuComponent } from './components/crear-usu/crear-usu.component';
 
 //Declarar los modulos 
 @NgModule({
@@ -40,7 +37,7 @@ import { CrearUsuComponent } from './components/crear-usu/crear-usu.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ReservaService, HabitacionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,9 +2,9 @@
 var express = require('express');
 var bodyParser= require('body-parser');
 var app = express();
-var hotelRoutes = require('./routes/hotel.routes'); // Cambio de nombre del archivo de rutas
+var hotelRoutes = require('./routes/hotel.routes')
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use((req,res,next)=>{
     res.header('Access-Control-Allow-Origin','*');
