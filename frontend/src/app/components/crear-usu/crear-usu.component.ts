@@ -19,6 +19,8 @@ export class CrearUsuComponent {
       response => {
         console.log('Cliente registrado exitosamente:', response);
         this.status = 'success';
+        // Limpiar el formulario después de guardar
+        this.cliente = new Cliente('', '', '', '', '', '');
       },
       error => {
         console.error('Error al registrar cliente:', error);

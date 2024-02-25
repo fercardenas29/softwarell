@@ -13,12 +13,8 @@ export class ClienteService{
     ){
         this.url=Global.url;
     }
-    //ver cliente
+    
     //http://locahost:3700/cliente
-    getClientes():Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'clientes',{headers:headers});
-    }
     //guardar cliente
     guardarCliente(cliente:Cliente):Observable<any>{
         let params=JSON.stringify(cliente);
