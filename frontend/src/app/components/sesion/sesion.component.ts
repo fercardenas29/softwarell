@@ -1,7 +1,8 @@
-// sesion.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Cliente, Habitacion, Reserva } from '../../models/hotel';
 import { ClienteService , ReservaService } from '../../services/hotel.service';
+
+declare var paypal: any;
 
 @Component({
   selector: 'app-sesion',
@@ -11,18 +12,48 @@ import { ClienteService , ReservaService } from '../../services/hotel.service';
 export class SesionComponent implements OnInit {
   public clienteActual: Cliente | null = null;
   public reservasConfirmadas: Reserva[] = [];
-  
+
   constructor(
     private clienteService: ClienteService,
     private reservaService: ReservaService,
   ) {}
 
   ngOnInit(): void {
-    const clienteId = '65daf0c78e3761601e5a6c07'; // ID quemado
-    this.cargarCliente(clienteId);
-    this.cargarCliente(clienteId);
-    this.cargarReservasDelCliente(clienteId);
+    if ((window as any)['paypal']) { // Aquí se especifica 'any' para la expresión de índice
+      this.initializePayPalButton();
+    } else {
+      // Agrega el script de PayPal si aún no está cargado
+      const script = document.createElement('script');
+      script.src = 'https://www.paypal.com/sdk/js?currency=USD&client-id=AUtvW7SAEUXaG1SUQ1JbLMz9mrvyzFHsmeRBcn8l_bY-_Q1MGEkjicLc6ra_LlchwzFaYX-8kgJkDqy6';
+      script.onload = () => {
+        this.initializePayPalButton();
+      };
+      document.body.appendChild(script);
+    }
   }
+
+initializePayPalButton(): void {
+    paypal.Buttons({
+      createOrder: (data: any, actions: any) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: '100.00'
+              }
+            }
+          ]
+        });
+      },
+      onApprove: (data: any, actions: any) => {
+        // Lógica cuando el usuario aprueba el pago
+      },
+      onError: (err: any) => {
+        // Lógica en caso de error en el pago
+      }
+    }).render('#paypal-button-container');
+  }
+
 
   cargarCliente(clienteId: string) {
     this.clienteService.getCliente(clienteId).subscribe(
@@ -72,7 +103,6 @@ export class SesionComponent implements OnInit {
         console.error('Error al guardar la reserva:', err);
         // Manejar el error, por ejemplo, mostrando un mensaje al usuario
       }
-      
     });
     this.cargarReservasDelCliente(clienteId);
   }
