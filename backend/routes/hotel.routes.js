@@ -25,24 +25,17 @@ router.post('/hotel/subir-imagen/:id', multipartyMiddleWare, controllers.habitac
 router.get('/hotel/get-imagen/:imagen', controllers.habitacionController.getImage);
 
 // Rutas para Cliente
-router.get('/hotel/inicio', controllers.clienteController.inicio); 
-router.post('/hotel/guardar', controllers.clienteController.saveCliente);
-router.get('/hotel/lista', controllers.clienteController.getCliente);
-router.get('/hotel/:id', controllers.clienteController.getCliente);
-router.delete('/hotel/:id', controllers.clienteController.deleteCliente);
+router.get('/hotel/inicio-cliente', controllers.clienteController.inicioCliente); 
+router.post('/hotel/guardar-cliente', controllers.clienteController.saveCliente);
+router.get('/hotel/lista-clientes', controllers.clienteController.getClientes);
+router.get('/hotel/cliente/:id', controllers.clienteController.getCliente);
+router.delete('/hotel/eliminar-cliente/:id', controllers.clienteController.deleteCliente);
 
 // Rutas para Reserva
-router.get('/hotel/inicio-reservas', controllers.reservaController.inicio);
+router.get('/hotel/inicio-reservas', controllers.reservaController.inicioReserva);
 router.post('/hotel/guardar-reserva', controllers.reservaController.saveReserva);
-router.get('/hotel/lista-reservas', controllers.reservaController.getReserva);
+router.get('/hotel/lista-reservas', controllers.reservaController.getReservas);
 router.get('/hotel/reserva/:id', controllers.reservaController.getReserva);
-router.delete('/hotel/reserva/:id', controllers.reservaController.deleteReserva);
-
-// Rutas para Contacto
-router.get('/hotel/inicio-contacto', controllers.contactoController.inicio);
-router.post('/hotel/guardar-contacto', controllers.contactoController.saveContacto);
-router.get('/hotel/lista-contacto', controllers.contactoController.getContacto);
-router.get('/hotel/contacto/:id', controllers.contactoController.getContacto);
-router.delete('/hotel/contacto/:id', controllers.contactoController.deleteContacto);
+router.delete('/hotel/eliminar-reserva/:id', controllers.reservaController.deleteReserva);
 
 module.exports = router;
