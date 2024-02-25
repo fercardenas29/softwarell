@@ -27,5 +27,5 @@ export class Reserva{
         public fechaOutput: Date,
         public habitaciones: string[],
         public cliente: string[]
-    ){}   
+    ){}   
 }

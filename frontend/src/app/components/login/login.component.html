@@ -7,9 +7,7 @@
 
     <div class="login-container">
         <div class="tabs">
-            <button class="tab" onclick="showLogin()">Iniciar sesión</button>
-            <button class="tab" onclick="showCreateAccount()">Crear cuenta</button>
-            
+            <button class="btn-login" [routerLink]="['/crear-usu']">Crear Cuenta</button>            
         </div>
 
         <div id="loginForm">
@@ -30,8 +28,9 @@
             <input type="password" placeholder="Contraseña" required>
             <input type="password" placeholder="Contraseña (otra vez)" required>
             <p>Bienvenido, crea una cuenta</p>
-            <button type="submit">Crear cuenta</button>
+            <!-- Utiliza routerLink para navegar a la ruta '/crear-usu' -->
         </div>
+        
     </div>
     
     <script src="js/loginLogic.js"></script>

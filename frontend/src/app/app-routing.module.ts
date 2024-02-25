@@ -8,6 +8,7 @@ import { ReservaComponent } from './components/reserva/reserva.component';
 import { SesionComponent } from './components/sesion/sesion.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { TycComponent } from './components/tyc/tyc.component';
+import { CrearUsuComponent } from './components/crear-usu/crear-usu.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,9 @@ const routes: Routes = [
   { path: 'reserva', component: ReservaComponent },
   { path: 'sesion', component: SesionComponent },
   { path: 'sobre-nosotros', component: SobreNosotrosComponent },
-  { path: 'tyc', component: TycComponent }
+  { path: 'tyc', component: TycComponent },
+  { path: 'crear-usu', component: CrearUsuComponent },
+  
 ];
 
 @NgModule({

@@ -133,5 +133,5 @@ export class HabitacionService {
     deleteHabitacion(id: string): Observable<any>{
         let headers=new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.delete(this.url+'habitacion/'+id,{headers:headers});
-    }
+    }
 }
