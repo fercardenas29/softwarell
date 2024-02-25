@@ -16,6 +16,8 @@ import { HabitacionComponent } from './components/habitacion/habitacion.componen
 import { HomeComponent } from './components/home/home.component';
 import { TycComponent } from './components/tyc/tyc.component';
 import { CrearUsuComponent } from './components/crear-usu/crear-usu.component';
+import { HabitacionService } from './services/hotel.service';
+import { ReservaService } from './services/hotel.service';
 
 //Declarar los modulos 
 @NgModule({
@@ -40,7 +42,7 @@ import { CrearUsuComponent } from './components/crear-usu/crear-usu.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ReservaService, HabitacionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -37,6 +37,7 @@ router.get('/hotel/inicio-reservas', controllers.reservaController.inicioReserva
 router.post('/hotel/guardar-reserva', controllers.reservaController.saveReserva);
 router.get('/hotel/lista-reservas', controllers.reservaController.getReservas);
 router.get('/hotel/reserva/:id', controllers.reservaController.getReserva);
+router.get('/hotel/reservas-cliente/:id', controllers.reservaController.getReservaCliente);
 router.delete('/hotel/eliminar-reserva/:id', controllers.reservaController.deleteReserva);
 
 module.exports = router;

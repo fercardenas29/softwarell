@@ -81,6 +81,7 @@ var clienteController = {
     }
 }
 
+
 //Habitacion.Controller
 var fs  = require('fs');
 var path = require('path');
@@ -273,7 +274,21 @@ var reservaController = {
         } catch(error) {
             return res.status(500).send({ message: "Error al obtener la reserva" });
         }
-    },  
+    },
+
+    getReservaCliente: async function(req, res) {
+        try {
+            var clienteId = req.params.id; // Asegúrate de que el parámetro se llama 'id' en la ruta.
+            var reservas = await Reserva.find({ cliente: clienteId }).sort('-fechaInput');
+            if (!reservas || reservas.length === 0) {
+                return res.status(404).send({ message: "No hay reservas para este cliente" });
+            }
+            return res.status(200).send({ reservas });
+        } catch (error) {
+            return res.status(500).send({ message: "Error al obtener las reservas del cliente", error });
+        }
+    },
+    
 
     deleteReserva:async function(req, res){
         try{

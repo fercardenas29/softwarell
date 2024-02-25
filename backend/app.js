@@ -3,7 +3,9 @@ var express = require('express');
 var bodyParser= require('body-parser');
 var app = express();
 var hotelRoutes = require('./routes/hotel.routes'); // Cambio de nombre del archivo de rutas
+var path = require('path');
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use((req,res,next)=>{
