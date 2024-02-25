@@ -5,8 +5,8 @@ mongoose.set("strictQuery", false);
 var app=require('./app');
 
 //Conexion con la base
-//mongoose.connect('mongodb+srv://ferchocdh29:grupo7god@cluster1.cnyyzr0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1')
-mongoose.connect('mongodb://localhost:27017/hotel')
+mongoose.connect('mongodb+srv://ferchocdh29:grupo7god@cluster1.cnyyzr0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1')
+//mongoose.connect('mongodb://localhost:27017/hotel')
 .then(()=>{
     console.log('Conexión exitosa con la base de datos');
     app.listen(port,()=>{

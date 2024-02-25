@@ -11,7 +11,7 @@ var Reserva = require("../models/hotel");
 var clienteController = {
     inicio: function(req, res){
         return res.status(200).send({
-            message: "<h2> Bienvenidos </h2>"
+            message: "<h2> hola soy cliente </h2>"
         });
     },
 
@@ -84,7 +84,7 @@ var path = require('path');
 var habitacionController={
     getInicio:function(req, res){
         return res.status(201).send(
-            "<h1>Hola 2</h1>"
+            "<h1>Hola soy habitaciones</h1>"
         )
     },
 
@@ -103,7 +103,7 @@ var habitacionController={
             return res.status(200).send({ habitacion: habitacionGuardada });
         })
         .catch(err => {
-            return res.status(500).send({ message: "Error al guardar" });
+            return res.status(500).send({ message: "Error al guardar la habitacion" });
         });
     },
 
@@ -112,7 +112,7 @@ var habitacionController={
             return res.status(200).send({ habitaciones: habitaciones });
         })
         .catch(err => {
-            return res.status(500).send({ message: "Error al recuperar los datos" });
+            return res.status(500).send({ message: "Error al recuperar los datos de habitacion" });
         });
     },
 
@@ -223,7 +223,7 @@ var habitacionController={
 var reservaController = {
     inicio: function(req, res){
         return res.status(200).send({
-            message: "<h2> Bienvenidos </h2>"
+            message: "<h2> Bienvenidos a Reserva </h2>"
         });
     },
 
@@ -238,22 +238,22 @@ var reservaController = {
             var reservaStored = await reserva.save();
 
             if(!reservaStored){
-                return res.status(400).send({message: "No se ha podido guardar la habitacion"});
+                return res.status(400).send({message: "No se ha podido guardar la reserva"});
             }
             return res.status(201).send({reserva: reservaStored});
         } catch(error){
-            return res.status(500).send({message: "Error al guardar la habitacion"});
+            return res.status(500).send({message: "Error al guardar la reserva"});
         }
     },
     getReserva:async function(req, res){
         try{
             const reserva = await Reserva.find({}).sort();
             if(reserva.length === 0){
-                return res.status(404).send({message: "No hay habitaciones para mostrar"});
+                return res.status(404).send({message: "No hay reservas para mostrar"});
             }
             return res.status(200).send({reserva});
         } catch(error){
-            return res.status(500).send({message: "Error al obtener las habitaciones"});
+            return res.status(500).send({message: "Error al obtener las reservas"});
         }
     },
 
@@ -261,15 +261,15 @@ var reservaController = {
         try{
             var reservaId = req.params.id;
             if(!reserva){
-                return res.status(404).send({message: "No hay habitaciones para mostrar"});
+                return res.status(404).send({message: "No hay reservas para mostrar"});
                 var reserva= await reserva.findById(reservaId);
                 if (!reserva){
-                    return res.status(404).send({message: "No hay habitaciones para mostrar"});
+                    return res.status(404).send({message: "No hay reservas para mostrar"});
                 }
                 return res.status(200).send({reserva});
             }
         } catch(error){
-            return res.status(500).send({message: "Error al obtener las habitaciones"});
+            return res.status(500).send({message: "Error al obtener las reservas"});
         }
     },
 
@@ -278,11 +278,11 @@ var reservaController = {
             var reservaId = req.params.id;
             var reservaRemoved = await Reserva.findByIdAndDelete(reservaId);
             if(!reservaRemoved){
-                return res.status(404).send({message: "No hay habitaciones para eliminar"});
+                return res.status(404).send({message: "No hay reservas para eliminar"});
             }
             return res.status(200).send({reservaRemoved});
         } catch(error){
-            return res.status(500).send({message: "Error al eliminar la habitacion"});
+            return res.status(500).send({message: "Error al eliminar la reservas"});
         }
     }
 
@@ -293,7 +293,7 @@ var reservaController = {
 var contactoController = {
     inicio: function(req, res){
         return res.status(200).send({
-            message: "<h2> Bienvenidos </h2>"
+            message: "<h2> Bienvenidos a Contacto</h2>"
         });
     },
 
@@ -340,7 +340,7 @@ var contactoController = {
                 return res.status(200).send({contacto});
             }
         } catch(error){
-            return res.status(500).send({message: "Error al obtener las habitaciones"});
+            return res.status(500).send({message: "Error al obtener el Contacto"});
         }
     },
 
@@ -349,11 +349,11 @@ var contactoController = {
             var contactoId = req.params.id;
             var contactoRemoved = await Contacto.findByIdAndDelete(contactoId);
             if(!contactoRemoved){
-                return res.status(404).send({message: "No hay habitaciones para eliminar"});
+                return res.status(404).send({message: "No hay Contacto para eliminar"});
             }
             return res.status(200).send({contactoRemoved});
         } catch(error){
-            return res.status(500).send({message: "Error al eliminar la habitacion"});
+            return res.status(500).send({message: "Error al eliminar la Contacto"});
         }
     }
 

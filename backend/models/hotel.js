@@ -29,6 +29,7 @@ var ClienteSchema = Schema({
     telefono: Number,
 }, { collection: 'cliente' });
 
+//Contacto
 var ContactoSchema = Schema({
     nombre: String,
     telefono: Number,
