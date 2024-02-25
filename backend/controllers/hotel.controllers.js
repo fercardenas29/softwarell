@@ -22,6 +22,7 @@ var clienteController = {
             cliente.nombre = params.nombre;
             cliente.apellido = params.apellido;
             cliente.correo = params.correo;
+            cliente.contrasena = params.contrasena;
             cliente.cedula = params.cedula;
             cliente.telefono = params.telefono;
             
