@@ -37,6 +37,13 @@ export class ClienteService{
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.delete(this.url+'cliente/'+id,{headers:headers});
     }
+
+    // Método para buscar un cliente por correo y contraseña
+    iniciarSesion(correo: string, contrasena: string): Observable<any> {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        const body = { correo, contrasena };
+        return this._http.post(`${this.url}iniciar-sesion`, body, { headers });
+    }
 }
 
 //Reserva

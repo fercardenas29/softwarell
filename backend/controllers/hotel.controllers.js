@@ -59,22 +59,26 @@ var clienteController = {
         } catch (error) {
             return res.status(500).send({ message: "Error al obtener el cliente" });
         }
-    },
-    
-    deleteCliente:async function(req, res){
-        try{
-            var clienteId = req.params.id;
-            var clienteRemoved = await Cliente.findByIdAndDelete(clienteId);
-            if(!clienteRemoved){
-                return res.status(404).send({message: "No hay clientes para eliminar"});
+    },      
+
+    iniciarSesion: async function(req, res) {
+        const { correo, contrasena } = req.body;
+        try {
+            const usuario = await Cliente.findOne({ correo });
+            if (!usuario || usuario.contrasena !== contrasena) {
+                return res.status(401).send({ message: "Credenciales inválidas" });
             }
-            return res.status(200).send({clienteRemoved});
-        } catch(error){
-            return res.status(500).send({message: "Error al eliminar el cliente"});
+            return res.status(200).send({
+                _id: usuario._id,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                correo: usuario.correo
+            });
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+            return res.status(500).send({ message: "Error al iniciar sesión" });
         }
     }
-
-
 }
 
 //Habitacion.Controller
