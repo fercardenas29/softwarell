@@ -16,6 +16,7 @@ var ClienteSchema = Schema({
     nombre: String,
     apellido: String,
     correo: String,
+    contrasena: String,
     cedula: Number,    
     telefono: Number
 }, { collection: 'cliente' });

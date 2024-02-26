@@ -29,7 +29,7 @@ router.get('/hotel/inicio-cliente', controllers.clienteController.inicioCliente)
 router.post('/hotel/guardar-cliente', controllers.clienteController.saveCliente);
 router.get('/hotel/lista-clientes', controllers.clienteController.getClientes);
 router.get('/hotel/cliente/:id', controllers.clienteController.getCliente);
-router.delete('/hotel/eliminar-cliente/:id', controllers.clienteController.deleteCliente);
+router.post('/hotel/iniciar-sesion', controllers.clienteController.iniciarSesion);
 
 // Rutas para Reserva
 router.get('/hotel/inicio-reservas', controllers.reservaController.inicioReserva);

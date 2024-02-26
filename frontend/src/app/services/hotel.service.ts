@@ -15,12 +15,8 @@ export class ClienteService{
     ){
         this.url=Global.url;
     }
-    //ver cliente
+    
     //http://locahost:3700/cliente
-    getClientes():Observable<any>{
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.get(this.url+'clientes',{headers:headers});
-    }
     //guardar cliente
     guardarCliente(cliente:Cliente):Observable<any>{
         let params=JSON.stringify(cliente);
@@ -42,6 +38,13 @@ export class ClienteService{
     deleteCliente(id:String):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.delete(this.url+'cliente/'+id,{headers:headers});
+    }
+
+    // Método para buscar un cliente por correo y contraseña
+    iniciarSesion(correo: string, contrasena: string): Observable<any> {
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        const body = { correo, contrasena };
+        return this._http.post(`${this.url}iniciar-sesion`, body, { headers });
     }
 }
 
