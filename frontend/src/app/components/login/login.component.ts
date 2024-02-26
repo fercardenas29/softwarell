@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Cliente } from '../../models/hotel';
 import { ClienteService } from '../../services/hotel.service';
 
-
+// Componente para el inicio de sesión
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
