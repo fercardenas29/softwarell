@@ -12,7 +12,7 @@ import { CrearUsuComponent } from './components/crear-usu/crear-usu.component';
 
 
 const routes: Routes = [
-  { path: 'inicio', component:HomeComponent},
+  { path:'inicio', component:HomeComponent},
   { path: 'contacto', component: ContactoComponent },
   { path: 'habitacion', component: HabitacionComponent },
   { path: 'login', component: LoginComponent },
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'sobre-nosotros', component: SobreNosotrosComponent },
   { path: 'tyc', component: TycComponent },
   { path: 'crear-usu', component: CrearUsuComponent },
-  { path: 'carrito', component: ReservaComponent },
+  
 ];
 
 @NgModule({

@@ -81,7 +81,6 @@ var clienteController = {
     }
 }
 
-
 //Habitacion.Controller
 var fs  = require('fs');
 var path = require('path');
@@ -222,7 +221,6 @@ var habitacionController={
         })
     }
 }
-
 
 //Reserva.Controller
 var reservaController = {

@@ -31,7 +31,6 @@ router.get('/hotel/lista-clientes', controllers.clienteController.getClientes);
 router.get('/hotel/cliente/:id', controllers.clienteController.getCliente);
 router.post('/hotel/iniciar-sesion', controllers.clienteController.iniciarSesion);
 
-
 // Rutas para Reserva
 router.get('/hotel/inicio-reservas', controllers.reservaController.inicioReserva);
 router.post('/hotel/guardar-reserva', controllers.reservaController.saveReserva);

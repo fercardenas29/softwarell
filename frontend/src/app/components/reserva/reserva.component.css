@@ -7,6 +7,7 @@
   padding: 20px;
 }
 
+/* Estilos para cada artículo del carrito */
 .cart-item {
   display: flex;
   align-items: center;
@@ -17,26 +18,14 @@
   border: 1px solid #ddd;
 }
 
-.cart-item-info {
-  display: flex;
-  align-items: center;
-}
-
-.cart-item-img {
-  width: 100px; /* Ajusta el tamaño de la imagen */
+/* Estilos para la imagen y el nombre del producto */
+.cart-item img {
+  max-width: 50px;
   margin-right: 10px;
 }
 
 .cart-item-name {
-  font-size: 18px;
-  font-weight: bold;
-  margin-right: 20px; /* Ajusta el espacio entre el nombre y el precio */
-}
-
-.cart-item-price {
-  font-size: 18px; /* Ajusta el tamaño del texto del precio */
-  font-weight: bold;
-  margin-right: 0px;
+  flex-grow: 1;
 }
 
 /* Estilo por defecto del botón delete */
@@ -98,25 +87,6 @@ transition: background-color 0.3s; /* Transición suave para el cambio de color 
 /* Estilo del botón cuando el cursor pasa por encima */
 #complete-purchase:hover {
 background-color: #4494b3; /* Color de fondo cuando el cursor está encima */
-}
-
-/* Estilo por defecto para los botones del carrito */
-.cart-button {
-  background-color: #0f4d5a;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.cart-button:hover {
-  background-color: #4494b3;
 }
 
 
