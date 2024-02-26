@@ -33,7 +33,7 @@ export class SesionComponent implements OnInit {
     } else {
       // Agregar el script de PayPal si aún no está cargado
       const script = document.createElement('script');
-      script.src = 'https://www.paypal.com/sdk/js?currency=USD&client-id=AUtvW7SAEUXaG1SUQ1JbLMz9mrvyzFHsmeRBcn8l_bY-_Q1MGEkjicLc6ra_LlchwzFaYX-8kgJkDqy6';
+      script.src = 'https://www.paypal.com/sdk/js?currency=USD&client-id=AVA2QbjVbUwBFhkPODx8IoLi1VM5hWdxtj0IWgnzY7cX2_hORx-2w8RcOWiMAWHNc5RMRmcygagZDlPr';
       script.onload = () => {
         this.initializePayPalButton(totalCarrito); // Pasar el total del carrito al inicializar el botón de PayPal
       };
