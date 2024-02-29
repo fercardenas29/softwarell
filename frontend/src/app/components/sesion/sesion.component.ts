@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Cliente, Habitacion, Reserva } from '../../models/hotel';
 import { ClienteService , ReservaService, HabitacionService } from '../../services/hotel.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Inject } from '@angular/core';
 
 declare var paypal: any;
 
@@ -16,30 +18,43 @@ export class SesionComponent implements OnInit {
   public habitacionService: HabitacionService;
   mostrarMensajeCrearCuenta: boolean = false;
   public habitaciones: Habitacion[] = [];
+  public reservaciones: Reserva[] = [];
   public adultos: number = 1; // Variable para almacenar el número de adultos
   public children: number = 0; // Variable para almacenar el número de children
-
+  formularioModificacionReserva: FormGroup = new FormGroup({}); // Initialize the "formularioModificacionReserva" property with an empty FormGroup
+  reservaSeleccionada: Reserva | null = null;
+  reservas: Reserva[] = [];
   constructor(
     private clienteService: ClienteService,
     private reservaService: ReservaService,
-    private _habitacionService: HabitacionService
+    private _habitacionService: HabitacionService,
+    private formBuilder: FormBuilder
   ) {
     this.habitacionService = _habitacionService; // Inicializa la propiedad habitacionService
-
   }
 
-  public totalCarrito: number = 0;
-  
   ngOnInit(): void {
-    // Obtenemos el cliente actual desde localStorage
+    /*
+    // Inicializar el formulario de modificación de reservas
+    this.formularioModificacionReserva = this.formBuilder.group({
+      _id: [''], // Identificador de reserva
+      fechaInput: [''], // Fecha de entrada
+      fechaOutput: [''], // Fecha de salida
+      numeroAdultos: [''], // Número de adultos
+      numeroNinos: [''], // Número de niños
+      total: [''], // Total
+      habitaciones: [''], // Habitaciones
+      cliente: [''] // Cliente
+    });
+
+    //this.obtenerReservas();
+    */
     const clienteActualStorage = localStorage.getItem('clienteActual');
     const clienteActual = clienteActualStorage ? JSON.parse(clienteActualStorage) : null;
     const clienteId = clienteActual ? clienteActual._id : null;
     this.adultos = parseInt(localStorage.getItem('adults') || '1');
     this.children = parseInt(localStorage.getItem('children') || '0');
 
-
-    // Verificamos que tengamos un clienteId antes de continuar
     if (!clienteId) {
       console.error('No hay un cliente actual en el almacenamiento local.');
       this.mostrarMensajeCrearCuenta = true; // Establecer mostrarMensajeCrearCuenta en true
@@ -62,138 +77,213 @@ export class SesionComponent implements OnInit {
       };
       document.body.appendChild(script);
     }
-}
-
-// Método para guardar los datos de adultos y children en localStorage
-guardarDatosAdicionales(): void {
-  localStorage.setItem('adultos', this.adultos.toString());
-  localStorage.setItem('children', this.children.toString());
-}
-
-// Método para decrementar el número de adultos
-decrementAdultos(): void {
-  if (this.adultos > 1) {
-    this.adultos--;
-    this.guardarDatosAdicionales(); // Guardar los datos después de actualizarlos
   }
-}
 
-// Método para incrementar el número de adultos
-incrementAdultos(): void {
-  if (this.adultos < 5) {
-    this.adultos++;
-    this.guardarDatosAdicionales(); // Guardar los datos después de actualizarlos
+  mostrarFormularioModificacion(reserva: Reserva): void {
+    // Crear una cadena HTML para el formulario
+     // Verificar si reserva.fechaInput es una fecha válida
+  const fechaInputValue = reserva.fechaInput instanceof Date ? reserva.fechaInput.toISOString().split('T')[0] : '';
+
+  // Verificar si reserva.fechaOutput es una fecha válida
+  const fechaOutputValue = reserva.fechaOutput instanceof Date ? reserva.fechaOutput.toISOString().split('T')[0] : '';
+  // Crear una cadena HTML para el formulario
+  const formularioHTML = `
+    <form id="formularioModificacion">
+      <label for="fechaInput">Fecha de Entrada:</label>
+      <input type="date" id="fechaInput" name="fechaInput" value="${fechaInputValue}"><br><br>
+      <label for="fechaOutput">Fecha de Salida:</label>
+      <input type="date" id="fechaOutput" name="fechaOutput" value="${fechaOutputValue}"><br><br>
+      <!-- Otros campos del formulario -->
+      <input type="submit" value="Guardar Cambios" id="guardarCambiosBtn">
+    </form>
+  `;
+  
+    // Abrir una nueva ventana para mostrar el formulario de modificación
+    const nuevaVentana = window.open('', 'Modificar Reserva', 'width=400,height=500');
+  
+    // Escribir el contenido HTML en la nueva ventana
+    if (nuevaVentana) {
+      nuevaVentana.document.body.innerHTML = formularioHTML;
+  
+      // Obtener el formulario dentro de la nueva ventana
+      const formulario = nuevaVentana.document.getElementById('formularioModificacion');
+  
+      // Agregar un evento al formulario
+      formulario?.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evitar el envío del formulario por defecto
+  
+        // Obtener los valores de los campos del formulario
+        const fechaInputString = (<HTMLInputElement>nuevaVentana.document.getElementById('fechaInput'))?.value;
+        const fechaOutputString = (<HTMLInputElement>nuevaVentana.document.getElementById('fechaOutput'))?.value;
+  
+        // Convertir las cadenas de texto a objetos Date
+        const fechaInput = new Date(fechaInputString);
+        const fechaOutput = new Date(fechaOutputString);
+  
+        // Verificar si las fechas son válidas antes de asignarlas
+        if (!isNaN(fechaInput.getTime()) && !isNaN(fechaOutput.getTime())) {
+          // Lógica para enviar los datos al servidor
+          const reservaId = reserva._id || ''; // usa para obtener la ID de la reserva
+          const reservaModificada: Reserva = {
+            ...reserva,
+            fechaInput,
+            fechaOutput
+          };
+          this.enviarFormularioModificacion(reservaModificada, reservaId);
+  
+          // Cierra la ventana después de realizar las acciones necesarias
+          nuevaVentana.close();
+        } else {
+          console.error('Las fechas ingresadas no son válidas');
+        }
+      });
+    } else {
+      console.error('No se pudo abrir la ventana de modificación de reserva');
+    }
   }
-}
-
-// Método para decrementar el número de children
-decrementchildren(): void {
-  if (this.children > 0) {
-    this.children--;
-    this.guardarDatosAdicionales(); // Guardar los datos después de actualizarlos
-  }
-}
-
-// Método para incrementar el número de children
-incrementchildren(): void {
-  if (this.children < 5) {
-    this.children++;
-    this.guardarDatosAdicionales(); // Guardar los datos después de actualizarlos
-  }
-}
-
-eliminarReserva(reservaId: string): void {
-  this.reservaService.deleteReserva(reservaId).subscribe({
-    next: (res) => {
-      console.log('Reserva eliminada con éxito:', res);
-
-      // Suponiendo que tienes un array que contiene las habitaciones de la reserva que quieres actualizar.
-      const habitacionesActualizadas = this.reservasConfirmadas.find(reserva => reserva._id === reservaId)?.habitaciones;
-
-      if (habitacionesActualizadas) {
-        habitacionesActualizadas.forEach(habitacionId => {
-          // Encuentra la habitación en el array de habitaciones basándote en habitacionId y actualiza su cantidad
-          const habitacion = this.habitaciones.find(h => h._id === habitacionId);
-          if (habitacion) {
-            this.habitacionService.updateHabitacion({...habitacion, cantidad: habitacion.cantidad + 1}).subscribe({
-              next: (updateRes) => {
-                console.log('Habitación actualizada con éxito:', updateRes);
-                // Actualizar la lista de habitaciones en el estado local si es necesario
-              },
-              error: (err) => {
-                console.error('Error al actualizar la habitación:', err);
-              }
-            });
-          }
-        });
+  
+  // Función para enviar el formulario de modificación al servidor
+  enviarFormularioModificacion(reservaModificada: Reserva, reservaId: string): void {
+    // Agrega la ID de la reserva al objeto que se enviará al servidor
+    reservaModificada._id = reservaId;
+  
+    this.reservaService.updateReserva(reservaModificada).subscribe({
+      next: (res) => {
+        console.log('Reserva modificada con éxito:', res);
+      },
+      error: (error) => {
+        console.error('Error al modificar la reserva:', error);
       }
+    });
+  }
+  
 
-      // Actualiza la lista de reservas filtrando la que se acaba de eliminar
-      this.reservasConfirmadas = this.reservasConfirmadas.filter(reserva => reserva._id !== reservaId);
-    },
-    error: (err) => {
-      console.error('Error al eliminar la reserva:', err);
+
+  // Método para obtener todas las reservas
+  obtenerReservas(): void {
+    this.reservaService.getReservas().subscribe(
+      (reservas: Reserva[]) => {
+        this.reservas = reservas;
+      },
+      error => {
+        console.error('Error al obtener las reservas:', error);
+      }
+    );
+  }
+
+  // Método para obtener una reserva por su ID
+  obtenerReserva(id: string): void {
+    this.reservaService.getReserva(id).subscribe(
+      (reserva: Reserva) => {
+        // Aquí puedes manejar la respuesta, por ejemplo, asignarla a una propiedad
+        this.reservaSeleccionada = reserva;
+      },
+      error => {
+        console.error('Error al obtener la reserva por ID:', error);
+      }
+    );
     }
-  });
-}
 
+  guardarDatosAdicionales(): void {
+    localStorage.setItem('adultos', this.adultos.toString());
+    localStorage.setItem('children', this.children.toString());
+  }
 
-modificarReserva(reservaId: string): void {
-}
+  decrementAdultos(): void {
+    if (this.adultos > 1) {
+      this.adultos--;
+      this.guardarDatosAdicionales();
+    }
+  }
 
+  incrementAdultos(): void {
+    if (this.adultos < 5) {
+      this.adultos++;
+      this.guardarDatosAdicionales();
+    }
+  }
 
-initializePayPalButton(totalCarrito: number): void {
-  paypal.Buttons({
-    createOrder: (data: any, actions: any) => {
-      return actions.order.create({
-        purchase_units: [
-          {
-            amount: {
-              value: totalCarrito.toString() // Utilizar el total del carrito como el valor del pago
-            }
-          }
-        ]
-      });
-    },
-    onApprove: (data: any, actions: any) => {
-      // Lógica cuando el usuario aprueba el pago
-      return actions.order.capture().then((details: any) => {
-          // Lógica para manejar la captura exitosa del pago
-          console.log('Pago aprobado:', details);
-  
-          // Aquí puedes llamar al método confirmarReserva() para guardar la reserva en tu base de datos
-          this.confirmarReserva();
-  
-          // Llama a la función updateHabitacion para reducir la cantidad de habitaciones disponibles en 1
-          const carrito = this.cargarCarritoDesdeLocalStorage(); // Obtener el carrito desde localStorage
-          carrito.forEach(habitacion => {
-              this.habitacionService.updateHabitacion({...habitacion, cantidad: habitacion.cantidad - 1}).subscribe({
-                  next: (res) => {
-                      console.log('Habitación actualizada con éxito:', res);
-                  },
-                  error: (err) => {
-                      console.error('Error al actualizar la habitación:', err);//
-                  }
+  decrementchildren(): void {
+    if (this.children > 0) {
+      this.children--;
+      this.guardarDatosAdicionales();
+    }
+  }
+
+  incrementchildren(): void {
+    if (this.children < 5) {
+      this.children++;
+      this.guardarDatosAdicionales();
+    }
+  }
+
+  eliminarReserva(reservaId: string): void {
+    this.reservaService.deleteReserva(reservaId).subscribe({
+      next: (res) => {
+        console.log('Reserva eliminada con éxito:', res);
+
+        const habitacionesActualizadas = this.reservasConfirmadas.find(reserva => reserva._id === reservaId)?.habitaciones;
+
+        if (habitacionesActualizadas) {
+          habitacionesActualizadas.forEach(habitacionId => {
+            const habitacion = this.habitaciones.find(h => h._id === habitacionId);
+            if (habitacion) {
+              this.habitacionService.updateHabitacion({...habitacion, cantidad: habitacion.cantidad + 1}).subscribe({
+                next: (updateRes) => {
+                  console.log('Habitación actualizada con éxito:', updateRes);
+                },
+                error: (err) => {
+                  console.error('Error al actualizar la habitación:', err);
+                }
               });
+            }
           });
-  
-          // Aquí podrías redirigir al usuario o mostrar un mensaje de éxito
-          alert('¡Pago exitoso! Gracias por su compra.');
-      });
-    },
-  
-    onError: (err: any) => {
-      // Lógica en caso de error en el pago
-      console.error('Error en el pago:', err);
+        }
 
-      // Aquí puedes mostrar un mensaje de error al usuario o realizar otras acciones necesarias
-      // por ejemplo, volver a cargar el botón de PayPal para permitir que el usuario vuelva a intentarlo
-    }
-  }).render('#paypal-button-container');
-}
+        this.reservasConfirmadas = this.reservasConfirmadas.filter(reserva => reserva._id !== reservaId);
+      },
+      error: (err) => {
+        console.error('Error al eliminar la reserva:', err);
+      }
+    });
+  }
 
-
-
+  initializePayPalButton(totalCarrito: number): void {
+    paypal.Buttons({
+      createOrder: (data: any, actions: any) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: totalCarrito.toString()
+              }
+            }
+          ]
+        });
+      },
+      onApprove: (data: any, actions: any) => {
+        return actions.order.capture().then((details: any) => {
+            console.log('Pago aprobado:', details);
+            this.confirmarReserva();
+            const carrito = this.cargarCarritoDesdeLocalStorage();
+            carrito.forEach(habitacion => {
+                this.habitacionService.updateHabitacion({...habitacion, cantidad: habitacion.cantidad - 1}).subscribe({
+                    next: (res) => {
+                        console.log('Habitación actualizada con éxito:', res);
+                    },
+                    error: (err) => {
+                        console.error('Error al actualizar la habitación:', err);
+                    }
+                });
+            });
+            alert('¡Pago exitoso! Gracias por su compra.');
+        });
+      },
+      onError: (err: any) => {
+        console.error('Error en el pago:', err);
+      }
+    }).render('#paypal-button-container');
+  }
 
   cargarCliente(clienteId: string) {
     this.clienteService.getCliente(clienteId).subscribe(
@@ -210,11 +300,10 @@ initializePayPalButton(totalCarrito: number): void {
     this.reservaService.getReservasPorCliente(clienteId).subscribe({
       next: (res) => {
         this.reservasConfirmadas = res.reservas;
-        // Iterar sobre cada reserva y obtener los nombres de las habitaciones
         this.reservasConfirmadas.forEach(reserva => {
           reserva.habitaciones.forEach((habitacionId, index) => {
             this.habitacionService.obtenerNombreHabitacion(habitacionId).subscribe(nombre => {
-              reserva.habitaciones[index] = nombre; // Reemplaza el ID por el nombre
+              reserva.habitaciones[index] = nombre;
             });
           });
         });
@@ -225,85 +314,63 @@ initializePayPalButton(totalCarrito: number): void {
     });
   }
 
-
   confirmarReserva(): void {
     const habitaciones = this.cargarCarritoDesdeLocalStorage().map(hab => hab._id);
     const clienteId = this.clienteActual ? this.clienteActual._id : null;
-    const totalCarrito = this.habitacionService.obtenerTotalCarritoDesdeLocalStorage(); // Obtener el total del carrito
+    const totalCarrito = this.habitacionService.obtenerTotalCarritoDesdeLocalStorage();
 
-    // Verificamos que clienteId no sea null
     if (clienteId === null) {
       console.error('No hay un cliente actual seleccionado.');
       return;
     }
-  
-    // Recuperar las fechas de ingreso y salida almacenadas temporalmente
+
     const fechaIngreso = localStorage.getItem('fechaIngreso');
     const fechaSalida = localStorage.getItem('fechaSalida');
-  
-    // Verificar que las fechas no sean nulas
+
     if (!fechaIngreso || !fechaSalida) {
       console.error('Las fechas de ingreso y salida no están disponibles.');
       return;
     }
-  
-    // Crear la reserva con las fechas reales y los demás datos
+
     const nuevaReserva = new Reserva(
       null,
-      new Date(fechaIngreso), // Convertir a objeto Date
-      new Date(fechaSalida), // Convertir a objeto Date
-      this.adultos, // Guardar el número de adultos
-      this.children, // Guardar el número de children
+      new Date(fechaIngreso),
+      new Date(fechaSalida),
+      this.adultos,
+      this.children,
       totalCarrito,
       habitaciones,
       clienteId
     );
-  
-    // Guardar la reserva en la base de datos
+
     this.reservaService.guardarReserva(nuevaReserva).subscribe({
       next: (res) => {
         console.log('Reserva guardada con éxito:', res);
-  
-        // Mostrar los datos de la reserva por consola
         console.log('Datos de la reserva:', nuevaReserva);
-  
-        // Redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (err) => {
         console.error('Error al guardar la reserva:', err);
-        // Manejar el error, por ejemplo, mostrando un mensaje al usuario
       }
     });
-  
+
     this.cargarReservasDelCliente(clienteId);
   }
-  
-  
 
-  // Método para cargar el carrito desde localStorage
   private cargarCarritoDesdeLocalStorage(): Habitacion[] {
     const carritoJSON = localStorage.getItem('carrito');
     return carritoJSON ? JSON.parse(carritoJSON) : [];
   }
-  /*
-    obtenerTotalCarritoDesdeLocalStorage(): number {
-      const carritoJSON = localStorage.getItem('carrito');
-      if (carritoJSON) {
-          const carrito = JSON.parse(carritoJSON);
-          this.totalCarrito = carrito.reduce((total: number, hab: Habitacion) => total + hab.precio, 0);
-      } else {
-          this.totalCarrito = 0; // Si no hay elementos en el carrito, el total es cero
-      }
-      return this.totalCarrito;
-  }
-  */
 
   cerrarSesion(): void {
-    // Elimina el cliente actual del almacenamiento local
     localStorage.removeItem('clienteActual');
-
-    // Redirige al usuario a la página de inicio de sesión
     window.location.href = '/inicio';
   }
-
 }
+
+
+/*
+function enviarFormularioModificacion() {
+  throw new Error('Function not implemented.');
+}
+*/
+

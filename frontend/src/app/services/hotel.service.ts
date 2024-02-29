@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Habitacion, Reserva, Cliente } from "../models/hotel";
 import { Global } from "./global";
-import { Observable, BehaviorSubject, map } from "rxjs";
+import { Observable, BehaviorSubject, map, catchError } from "rxjs";
 
 //Cliente
 @Injectable({
@@ -94,31 +94,32 @@ export class ReservaService{
     }
   
     //editar reserva
-    /*
-    updateReserva(reserva:Reserva):Observable<any>{
-        let params=JSON.stringify(reserva);
-        let headers=new HttpHeaders().set('Content-Type','application/json');
-        return this._http.put(this.url+'reserva/'+reserva._id,params,{headers:headers});
+    updateReserva(reserva: Reserva): Observable<any> {
+        let params = JSON.stringify(reserva);
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.put(this.url + 'modificar-reserva/' + reserva._id, params, { headers: headers })
+            .pipe(
+                catchError(error => {
+                    console.error('Error al actualizar la reserva:', error);
+                    throw error; // Reenviar el error para que el consumidor pueda manejarlo
+                })
+            );
     }
-    */
     //eliminar reserva
     deleteReserva(id:String):Observable<any>{
         let headers=new HttpHeaders().set('Content-Type','application/json');
         return this._http.delete(this.url+'eliminar-reserva/'+id,{headers:headers});
     }
-
-    // Método para buscar un reserva por fecha
-/*
-    obtenerFechasSeleccionadas(): Observable<{fechaIngreso: string, fechaSalida: string}> {
-        return combineLatest([
-            this.fechaService.fechaIngreso$,
-            this.fechaService.fechaSalida$
-        ]).pipe(
-            map(([fechaIngreso, fechaSalida]) => ({fechaIngreso, fechaSalida}))
-        );
+    /*
+    // Metodo para editar reserva
+    modificarReserva(reserva:Reserva):Observable<any>{
+        let params=JSON.stringify(reserva);
+        let headers=new HttpHeaders().set('Content-Type','application/json');
+        return this._http.put(this.url+'modificar-reserva/'+reserva,params,{headers:headers});
     }
-    
     */
+
+
 }
 
 //Habitacion

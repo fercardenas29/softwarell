@@ -236,8 +236,8 @@ var habitacionController={
             return res.status(200).send({ nombre: habitacion.nombre });
         } catch (error) {
             return res.status(500).send({ message: "Error al obtener el nombre de la habitación" });
-        }
-    }
+        }
+}
 
 }
 
@@ -286,18 +286,27 @@ var reservaController = {
     getReserva: async function(req, res) {
         try {
             var reservaId = req.params.id;
-            if(!reserva){
-                return res.status(404).send({message: "No hay habitaciones para mostrar"});
-                var reserva= await reserva.findById(reservaId);
-                if (!reserva){
-                    return res.status(404).send({message: "No hay habitaciones para mostrar"});
-                }
-                return res.status(200).send({reserva});
+            // Aquí deberías verificar si el ID de la reserva es válido, por ejemplo, si es una cadena no vacía
+            if (!reservaId) {
+                return res.status(400).send({ message: "ID de reserva no válido" });
             }
-        } catch(error){
-            return res.status(500).send({message: "Error al obtener las habitaciones"});
+    
+            // Busca la reserva por su ID
+            var reserva = await Reserva.findById(reservaId);
+    
+            // Verifica si la reserva existe
+            if (!reserva) {
+                return res.status(404).send({ message: "No se encontró la reserva" });
+            }
+    
+            // Devuelve la reserva encontrada
+            return res.status(200).send({ reserva });
+        } catch(error) {
+            console.error("Error al obtener la reserva:", error);
+            return res.status(500).send({ message: "Error al obtener la reserva" });
         }
     },
+    
 
     getReservaCliente: async function(req, res) {
         try {
@@ -324,7 +333,40 @@ var reservaController = {
         } catch(error){
             return res.status(500).send({message: "Error al eliminar la habitacion"});
         }
+    },
+
+    // Modificar reserva
+    // Modificar reserva
+modificarReserva: async function(req, res) {
+    try {
+        var reservaId = req.params.id;
+        var updateData = req.body;
+
+        // Verificar si se proporcionó el ID de la reserva
+        if (!reservaId) {
+            return res.status(404).send({ message: "El ID de la reserva no fue proporcionado" });
+        }
+
+        // Verificar si hay datos de actualización proporcionados
+        if (!updateData || Object.keys(updateData).length === 0) {
+            return res.status(400).send({ message: "No se proporcionaron datos de actualización válidos" });
+        }
+
+        // Actualizar la reserva
+        var updatedReserva = await Reserva.findByIdAndUpdate(reservaId, updateData, { new: true });
+
+        // Verificar si la reserva fue encontrada y actualizada correctamente
+        if (!updatedReserva) {
+            return res.status(404).send({ message: "La reserva no existe" });
+        }
+
+        return res.status(200).send({ message: "Reserva modificada correctamente", reserva: updatedReserva });
+    } catch (error) {
+        return res.status(500).send({ message: "Error al modificar la reserva", error });
     }
+}
+
+    
 
 
 }

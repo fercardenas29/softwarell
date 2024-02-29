@@ -37,11 +37,26 @@
               </p>
             </div>
             <div class="reservation-actions">
+              <!-- Botones de acciones: Eliminar y Modificar -->
               <button class="btn btn-eliminar float-right" (click)="eliminarReserva(reserva._id ? reserva._id : '')">Eliminar</button>
-            <button class="btn btn-modificar float-left">Modificar</button>
+              <button class="btn btn-modificar float-left" (click)="mostrarFormularioModificacion(reserva)">Modificar</button>
+            </div>
+            <!-- Aquí se mostrará el formulario de modificación -->
+            <div *ngIf="reserva.mostrarFormularioModificacion">
+              <!-- Código del formulario de modificación -->
+              <!--<form (ngSubmit)="enviarFormularioModificacion()">-->
+                <!-- Campos del formulario para modificar la reserva -->
+                <div class="form-group">
+                  <label for="fechaInput">Fecha de entrada:</label>
+                  <input type="text" class="form-control" id="fechaInput" formControlName="fechaInput">
+                </div>
+                <!-- Agrega más campos según sea necesario -->
+
+                <!-- Botón para enviar el formulario de modificación -->
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              <!--</form>-->
             </div>
           </div>
-          
         </div>
         <ng-template #emptySummary>
           <p>'Historial vacío'</p>

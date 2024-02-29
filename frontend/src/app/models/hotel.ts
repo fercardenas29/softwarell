@@ -11,6 +11,7 @@ export class Cliente{
 }
 
 export class Habitacion {
+    static _id: string;
     constructor(
         public _id: string,
         public nombre: string,
@@ -31,6 +32,7 @@ export class Reserva{
         public numeroNinos: number | null,
         public total: number | null,
         public habitaciones: string[],
-        public cliente: string | null
+        public cliente: string | null,
+        public mostrarFormularioModificacion?: boolean // Propiedad opcional
     ){}   
 }
